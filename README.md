@@ -1,4 +1,4 @@
-# Phase 0 of CPSC 210 Project
+# CPSC 210 Project - Phase 0
 
 ## The Proposal
 My project will be an **"Shop Inventory/Management"** application. The application allows a user to be in charge of and manage the inventory of their own shop. Possible features include the following:
