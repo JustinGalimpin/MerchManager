@@ -4,7 +4,7 @@
 My project will be an **"Shop Inventory/Management"** application. The application allows a user to be in charge of and manage the inventory of their own shop. Possible features include the following:
 - Adding items to the shop to be purchased
 - Categorizing/defining specific qualities for each added item 
-    - Possible categories include what type of item is it (e.g. is it a type of armor, a type of consumable, etc.), the rarity of the item, the price of the item, and a general description of the item
+    - Possible categories include what type of item is it (e.g. is it a type of clothing, a type of consumable, etc.), the rarity of the item, the price of the item, and a general description of the item
 - Filtering for a list of specific types of items available in the shop
 - Selling items in the shop
     - Tracking the total money earned from selling items
