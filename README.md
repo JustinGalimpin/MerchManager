@@ -9,11 +9,11 @@ My project will be an **"Shop Inventory/Management"** application. The applicati
 - Selling items in the shop
     - Tracking the total money earned from selling items
 - Applying a sale or discount to an item(s) in the shop
-- Creating, saving, and/or loading a new shop
+- Creating, saving, and/or loading a new shop (stretch goal/feature)
 
 The application can be used personally for an individual to keep track of and manage items they may want to sell to others. Alternatively, the application could be used for more creative/game-like purposes, such as for individuals who want a way to manage a fictional shop in a role-playing game they may be running with friends.
 
-This project is of interest to me because, I find the application has the potential to test my understanding of several core elements of coding (creating and manipulating objects, usage of Arrays, etc.) in a way that will not only improve my understanding of coding but ultimately leave me with an application that my friends and I could utilize for our own recreational use.
+This project is of interest to me because I find the application has the potential to test my understanding of several core elements of coding (creating and manipulating objects, manipulating Arrays, etc.) in a way that will not only improve my understanding of coding but ultimately leave me with an application that my friends and I could utilize for our own recreational use.
 
 ## User Stories for Phase 0
 
