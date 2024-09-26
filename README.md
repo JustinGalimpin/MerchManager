@@ -11,7 +11,7 @@ My project will be an **"Shop Inventory/Management"** application. The applicati
 - Applying a sale or discount to an item(s) in the shop
 - Creating, saving, and/or loading a new shop (stretch goal/feature)
 
-The application can be used personally for an individual to keep track of and manage items they may want to sell to others. Alternatively, the application could be used for more creative/game-like purposes, such as for individuals who want a way to manage a fictional shop in a role-playing game they may be running with friends.
+The application can be used personally for an individual to keep track of and manage items they may want to sell to others. Alternatively, the application could be used for more creative/game-like purposes, such as for individuals who want a way to manage a fictional shop in a role-playing game they may be running with friends. The shop itself works as a "base" for any type of theme the user would want; the user could use the application to create a jewelry shop (where the items the shop sells are jewelry), a restaurant (the items being types of food/dishes), or even a futuristic / medieval-era inspired shop.
 
 This project is of interest to me because I find the application has the potential to test my understanding of several core elements of coding (creating and manipulating objects, manipulating Arrays, etc.) in a way that will not only improve my understanding of coding but ultimately leave me with an application that my friends and I could utilize for our own recreational use.
 
