@@ -42,5 +42,27 @@ public class Shop {
     public void viewInventory() {
         //stub       
     }
+
+    // Getters and Setters
+
+    public String getShopName() {
+        return shopName;
+    }
     
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
+    public int getIncome() {
+        return income;
+    }
+
+    public void setShopName() {
+        // stub
+    }
+
+    public void setIncome() {
+        // stub
+    }
+
 }
