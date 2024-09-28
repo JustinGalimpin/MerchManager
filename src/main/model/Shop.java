@@ -1,9 +1,32 @@
 package model;
 
+import java.util.ArrayList;
+
+// Represents a shop having a name, inventory, and total money earned
 public class Shop {
-    int other;
+    private String name;
+    private ArrayList<Item> inventory;
+    private int totalMoneyEarned;
 
     public Shop() {
-        other = 4;
+        //stub
     }
+
+    public void addItem(){
+        //stub
+    }
+
+    public void sellItem(){
+        //stub
+    }
+
+    public void modifyItem(){
+        //stub
+    }
+
+    public void viewInventory(){
+        //stub       
+    }
+    
+
 }
