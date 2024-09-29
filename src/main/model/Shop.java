@@ -49,8 +49,8 @@ public class Shop {
         return shopName;
     }
     
-    public ArrayList<Item> getInventory() {
-        return inventory;
+    public int getInventorySize() {
+        return inventory.size();
     }
 
     public int getIncome() {
