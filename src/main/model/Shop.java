@@ -35,11 +35,13 @@ public class Shop {
 
     // EFFECTS: prints out a list of all item names in inventory
     //          tells the user if there are no items in the inventory
-    public void viewInventory(ArrayList<Item> inventory) {
-        for (Item item : inventory) {
-            System.out.println(item);
-        }
-    }
+    // NOTE: POSSIBLY MOVE TO SHOP APP
+    // public String viewInventory() {
+    //     for (Item item : this.inventory) {
+    //         return item.getItemName();
+    //     }  
+    //     return "All items have been listed.";
+    // }
 
     // Getters and Setters
 
