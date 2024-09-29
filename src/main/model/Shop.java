@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import model.Item;
 
 // Represents a shop having a name, inventory, and total money earned
 public class Shop {
@@ -40,6 +39,8 @@ public class Shop {
     //          replaces it with a new value
     public void modifyItem(Item item) {
         //stub
+        // Do this as a singular method or multiple methods? 
+        // Singular method = possibly use a switch case?
     }
 
     // EFFECTS: prints out a list of all item names in inventory
