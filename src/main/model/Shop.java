@@ -12,14 +12,16 @@ public class Shop {
     // EFFECTS: constructs a shop with given title, 0 income, and an 
     //          empty inventory
     public Shop(String shopName) {
-        //stub
+        this.shopName = shopName;
+        this.inventory = new ArrayList<>();
+        this.income = 0;
     }
 
     // REQUIRES: 
     // MODIFIES: this
     // EFFECTS: adds item to inventory
     public void addItem(Item item) {
-        //stub
+        inventory.add(item);
     }
 
     // REQUIRES: inventory contains the given item
@@ -27,7 +29,8 @@ public class Shop {
     // EFFECTS: removes item from inventory,
     //          increases shop's income by item's cost
     public void sellItem(Item item) {
-        //stub
+        this.income = this.income + item.getPrice();
+        inventory.remove(item);
     }
 
     // REQUIRES: inventory contains the given item
@@ -38,9 +41,17 @@ public class Shop {
         //stub
     }
 
-    // EFFECTS: returns a printed list of all item names in inventory
-    public void viewInventory() {
-        //stub       
+    // EFFECTS: prints out a list of all item names in inventory
+    //          tells the user if there are no items in the inventory
+    public void viewInventory(ArrayList<Item> inventory) {
+        if (inventory.isEmpty()) {
+            System.out.println("The shop is empty!");
+        } else {
+            System.out.println("Current inventory");
+            for (Item item : inventory) {
+                System.out.println(item);
+            }
+        }
     }
 
     // Getters and Setters
