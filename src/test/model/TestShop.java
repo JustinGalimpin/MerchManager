@@ -48,8 +48,18 @@ public class TestShop {
     }
 
     @Test
-    void testModifyItem() {
-        // Stub; not sure how this method would look like yet
+    void testSellMulltipleItem() {
+        shop.addItem(sword);
+        assertEquals(1, shop.getInventorySize());
+        shop.addItem(potion);
+        assertEquals(2, shop.getInventorySize());
+
+        shop.sellItem(sword);
+        assertEquals(1, shop.getInventorySize());
+        assertEquals(10, shop.getIncome());
+        shop.sellItem(potion);
+        assertEquals(0, shop.getInventorySize());
+        assertEquals(60, shop.getIncome());
     }
 
     @Test
