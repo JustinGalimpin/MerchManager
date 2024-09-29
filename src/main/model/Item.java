@@ -18,7 +18,7 @@ public class Item {
         this.description = description;
     }
 
-    // Getters
+    // Getters and Settters
 
     public String getItemName() {
         return this.itemName;
@@ -38,6 +38,24 @@ public class Item {
 
     public String getDescription() {
         return this.description;
+    }
+
+    // MODIFIES: this
+    // EFFECT: replaces the item's current name with a new one
+    public void setItemName(String newName) {
+        this.itemName = newName;
+    }
+
+    // MODIFIES: this
+    // EFFECT: replaces the item's current price with a new one
+    public void setPrice(int newPrice) {
+        this.price = newPrice;
+    }
+
+    // MODIFIES: this
+    // EFFECT: replaces the item's current description with a new one
+    public void setDescription(String newDescription) {
+        this.description = newDescription;
     }
 
 }

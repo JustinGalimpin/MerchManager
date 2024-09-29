@@ -33,36 +33,6 @@ public class Shop {
         inventory.remove(item);
     }
 
-    // REQUIRES: inventory contains the given item
-    // MODIFIES: this, Item
-    // EFFECTS: changes the current name of a chosen item and
-    //          replaces it with a new name
-    public void modifyName(Item item) {
-        //stub
-        // Do this as a singular method or multiple methods? 
-        // Singular method = possibly use a switch case?
-    }
-
-    // REQUIRES: inventory contains the given item
-    // MODIFIES: this, Item
-    // EFFECTS: changes the current price of a chosen item and
-    //          replaces it with a new price
-    public void modifyPrice(Item item) {
-        //stub
-        // Do this as a singular method or multiple methods? 
-        // Singular method = possibly use a switch case?
-    }
-
-    // REQUIRES: inventory contains the given item
-    // MODIFIES: this, Item
-    // EFFECTS: changes the current description of a chosen item and
-    //          replaces it with a new description
-    public void modifyDescription(Item item) {
-        //stub
-        // Do this as a singular method or multiple methods? 
-        // Singular method = possibly use a switch case?
-    }
-
     // EFFECTS: prints out a list of all item names in inventory
     //          tells the user if there are no items in the inventory
     public void viewInventory(ArrayList<Item> inventory) {
