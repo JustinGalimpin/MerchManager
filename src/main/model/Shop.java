@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import model.Item;
 
 // Represents a shop having a name, inventory, and total money earned
 public class Shop {
@@ -29,7 +30,7 @@ public class Shop {
     // EFFECTS: removes item from inventory,
     //          increases shop's income by item's cost
     public void sellItem(Item item) {
-        this.income = this.income + item.getPrice();
+        this.income = this.income + item.getCost();
         inventory.remove(item);
     }
 
@@ -44,13 +45,8 @@ public class Shop {
     // EFFECTS: prints out a list of all item names in inventory
     //          tells the user if there are no items in the inventory
     public void viewInventory(ArrayList<Item> inventory) {
-        if (inventory.isEmpty()) {
-            System.out.println("The shop is empty!");
-        } else {
-            System.out.println("Current inventory");
-            for (Item item : inventory) {
-                System.out.println(item);
-            }
+        for (Item item : inventory) {
+            System.out.println(item);
         }
     }
 

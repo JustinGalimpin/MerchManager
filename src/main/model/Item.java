@@ -12,7 +12,33 @@ public class Item {
     // EFFECTS: constructs a shop with given title, 0 income, and an 
     //          empty inventory    
     public Item(String itemName, String type, String rarity, int cost, String description) {
-        //stub
+        this.itemName = itemName;
+        this.type = type;
+        this.rarity = rarity;
+        this.cost = cost;
+        this.description = description;
+    }
+
+    // Getters
+
+    public String getItemName() {
+        return this.itemName;
+    }
+    
+    public String getType() {
+        return this.type;
+    }
+
+    public String getRarity() {
+        return this.rarity;
+    }
+
+    public int getCost() {
+        return this.cost;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
 }
