@@ -29,15 +29,35 @@ public class Shop {
     // EFFECTS: removes item from inventory,
     //          increases shop's income by item's cost
     public void sellItem(Item item) {
-        this.income = this.income + item.getCost();
+        this.income = this.income + item.getPrice();
         inventory.remove(item);
     }
 
     // REQUIRES: inventory contains the given item
     // MODIFIES: this, Item
-    // EFFECTS: changes the current value of a chosen quality of an item and
-    //          replaces it with a new value
-    public void modifyItem(Item item) {
+    // EFFECTS: changes the current name of a chosen item and
+    //          replaces it with a new name
+    public void modifyName(Item item) {
+        //stub
+        // Do this as a singular method or multiple methods? 
+        // Singular method = possibly use a switch case?
+    }
+
+    // REQUIRES: inventory contains the given item
+    // MODIFIES: this, Item
+    // EFFECTS: changes the current price of a chosen item and
+    //          replaces it with a new price
+    public void modifyPrice(Item item) {
+        //stub
+        // Do this as a singular method or multiple methods? 
+        // Singular method = possibly use a switch case?
+    }
+
+    // REQUIRES: inventory contains the given item
+    // MODIFIES: this, Item
+    // EFFECTS: changes the current description of a chosen item and
+    //          replaces it with a new description
+    public void modifyDescription(Item item) {
         //stub
         // Do this as a singular method or multiple methods? 
         // Singular method = possibly use a switch case?
@@ -63,14 +83,6 @@ public class Shop {
 
     public int getIncome() {
         return income;
-    }
-
-    public void setShopName() {
-        // stub
-    }
-
-    public void setIncome() {
-        // stub
     }
 
 }

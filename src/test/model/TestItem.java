@@ -19,7 +19,7 @@ public class TestItem {
         assertEquals("Sword", sword.getItemName());
         assertEquals("Weapon", sword.getType());
         assertEquals("Common", sword.getRarity());
-        assertEquals(10, sword.getCost());
+        assertEquals(10, sword.getPrice());
         assertEquals("A basic sword.", sword.getDescription());
     }
 
