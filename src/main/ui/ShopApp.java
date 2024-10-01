@@ -22,17 +22,17 @@ public class ShopApp {
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runShop() {
-        firstShop = new Shop("The First Shop");
-
         boolean keepGoing = true;
         String command = null;
 
+        init();
+
         while (keepGoing) {
             displayMenu();
-            command = scanner.next();
+            command = scanner.nextLine();
             command = command.toLowerCase();
 
-            if (command.equals("quit")) {
+            if (command.equals("q")) {
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -43,16 +43,24 @@ public class ShopApp {
     }
 
     // MODIFIES: this
+    // EFFECTS: initializes Shop
+    private void init() {
+        firstShop = new Shop("The First Shop");
+        scanner = new Scanner(System.in);
+        scanner.useDelimiter("\r?\n|\r");
+    }
+
+    // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("a")) {
             addNewItem();
         } else if (command.equals("s")) {
-            addNewItem();
+            System.out.println("Filler"); // CHANGE
         } else if (command.equals("m")) {
-            addNewItem();
+            System.out.println("Filler"); // CHANGE
         } else if (command.equals("v")) {
-            addNewItem();
+            viewInventory();
         } else if (command.equals("$")) {
             firstShop.getIncome();
         } else {
@@ -71,6 +79,8 @@ public class ShopApp {
         System.out.println("\tq -> Leave the Shop");
     }
 
+    // REQUIRES: itemName, type, rarity, price, and and description
+    //           are non-empty Strings (or int in the case of price)
     // MODIFIES: this, inventory
     // EFFECTS: processes user input for a new item and
     //          adds the item to the Shop's inventory
@@ -98,6 +108,10 @@ public class ShopApp {
         System.out.println(itemName + " has been added to the shop!");
     }
 
+    // MODIFIES: this, inventory
+    // EFFECTS: searches for an item in the inventory,
+    //          if the item exists, sells (removes) the item and
+    //          adds its price to the shops income
     public void sellAnItem() {
 
     }
@@ -106,13 +120,18 @@ public class ShopApp {
 
     }
 
-    // EFFECT: Prints out the names of all items in the Shop
+    // EFFECT: Prints out the names of all items in the Shop,
+    //         otherwise, tells the user the Shop is empty
     public String viewInventory() {
         ArrayList<Item> inventory = firstShop.getInventory();
 
-        for (Item item : inventory) {
-            System.out.println(item.getItemName());
-        }  
+        if (inventory.isEmpty()) {
+            System.out.println("The shop has nothing for sale!");
+        } else {
+            for (Item item : inventory) {
+                System.out.println(item.getItemName());
+            }      
+        }
 
         return "All items have been listed.";
     }
