@@ -53,6 +53,10 @@ public class Shop {
         return inventory.size();
     }
 
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
     public int getIncome() {
         return income;
     }
