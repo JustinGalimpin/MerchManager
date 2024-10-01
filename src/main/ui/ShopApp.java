@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // Shop application
-// Some code for the following methods are attributed to the TellerApp example on edX:
+// Code for the following methods are attributed to the TellerApp example on edX:
 // runShop(), processCommand(), displayMenu()
 
 public class ShopApp {
@@ -56,13 +56,13 @@ public class ShopApp {
         if (command.equals("a")) {
             addNewItem();
         } else if (command.equals("s")) {
-            System.out.println("Filler"); // CHANGE
+            sellAnItem();
         } else if (command.equals("m")) {
-            System.out.println("Filler"); // CHANGE
+            modifyAnItem();
         } else if (command.equals("v")) {
             viewInventory();
         } else if (command.equals("$")) {
-            firstShop.getIncome();
+            System.out.println("Total Income: " + firstShop.getIncome());
         } else {
             System.out.println("Selection not valid; try again!");
         }
@@ -70,7 +70,7 @@ public class ShopApp {
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
-        System.out.println("\nWhat would you like to do?");
+        System.out.println("\nWelcome to the Shop! What would you like to do?");
         System.out.println("\ta -> Add an item to the Shop");
         System.out.println("\ts -> Sell an item from the Shop");
         System.out.println("\tm -> Modify an item from the Shop");
@@ -108,32 +108,45 @@ public class ShopApp {
         System.out.println(itemName + " has been added to the shop!");
     }
 
+    // REQUIRES: item exists in the Shop
     // MODIFIES: this, inventory
-    // EFFECTS: searches for an item in the inventory,
-    //          if the item exists, sells (removes) the item and
-    //          adds its price to the shops income
+    // EFFECTS: searches for an item in the inventory, sells (removes) the item
+    //          and adds its price to the shops income
     public void sellAnItem() {
+        System.out.println("What is the name of the item you want to buy?");
+        String itemToBuy = scanner.nextLine();
 
+        ArrayList<Item> inventory = firstShop.getInventory();
+        
+        for (Item item : inventory) {
+            if (item.getItemName().equals(itemToBuy)) {
+                System.out.println(item.getItemName() + " has been sold!");
+                firstShop.sellItem(item);
+                break;
+            }
+        }      
     }
 
+    // MODIFIES: this, item
+    // EFFECTS: searches for an item in the inventory,
+    //          if the item exists, replace its current name, price, or description
+    //          with a new appropriate name, price, or description
     public void modifyAnItem() {
 
     }
 
     // EFFECT: Prints out the names of all items in the Shop,
     //         otherwise, tells the user the Shop is empty
-    public String viewInventory() {
+    public void viewInventory() {
         ArrayList<Item> inventory = firstShop.getInventory();
 
         if (inventory.isEmpty()) {
             System.out.println("The shop has nothing for sale!");
         } else {
             for (Item item : inventory) {
-                System.out.println(item.getItemName());
+                System.out.println("Item for sale: " + item.getItemName() + " for " + item.getPrice() + " gold.");
             }      
         }
-
-        return "All items have been listed.";
     }
 }
 
