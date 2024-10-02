@@ -21,7 +21,7 @@ public class Shop {
     // EFFECTS: checks if an item with the same name alrady exists,
     //          if it does, it fails to add the new item to the inventory
     //          otherwise, it adds the new item to inventory
-    public void addItem(Item item) {
+    public boolean addItem(Item item) {
         boolean exists = false;
 
         for (Item i : inventory) {
@@ -33,8 +33,9 @@ public class Shop {
 
         if (!exists) {
             inventory.add(item);
+            return true;
         } else {
-            System.out.println("Error! Item name already exists in inventory");
+            return false;
         }
     }
 

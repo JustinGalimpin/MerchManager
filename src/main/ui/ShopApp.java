@@ -106,9 +106,12 @@ public class ShopApp {
         String description = scanner.nextLine();
 
         Item newItem = new Item(itemName, type, quality, price, description);
-        firstShop.addItem(newItem);
 
-        System.out.println(itemName + " has been added to the shop!");
+        if (firstShop.addItem(newItem)) {
+            System.out.println("Item has been added to the shop!");
+        } else {
+            System.out.println("Error! The shop already has an item with that name.");
+        }
     }
 
     // REQUIRES: Item name exists in the Shop
