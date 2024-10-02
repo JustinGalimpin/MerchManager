@@ -18,7 +18,7 @@ This project is of interest to me because I find the application has the potenti
 ## User Stories for Phase 0
 
 - As a user, I want to be able to **create a new item to add to the shop** and **specify the item's name, type, rarity, cost, and description.**
-- As a user, I want to be able to **view a list of all the available items** in the shop and **filter the list by a specific item quality** (such as the type, rarity, or cost).
+- As a user, I want to be able to **view a list of all the available items** in the shop and **search the list for a specific item by name**.
 - As a user, I want to be able to **select an item from the shop and modify one of its previous assigned qualities**
 - As a user, I want to be able to **sell (remove) an item from the shop**
 - As a user, I want to be able to **track the total income of the shop** based off of items that are sold (removed)
