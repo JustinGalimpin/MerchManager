@@ -17,7 +17,7 @@ public class Shop {
         this.income = 0;
     }
 
-    // REQUIRES: 
+    // REQUIRES: item does not already exist in the shop
     // MODIFIES: this
     // EFFECTS: adds item to inventory
     public void addItem(Item item) {
@@ -32,18 +32,6 @@ public class Shop {
         this.income = this.income + item.getPrice();
         inventory.remove(item);
     }
-
-    // EFFECTS: prints out a list of all item names in inventory
-    //          tells the user if there are no items in the inventory
-    // NOTE: POSSIBLY MOVE TO SHOP APP
-    // public String viewInventory() {
-    //     for (Item item : this.inventory) {
-    //         return item.getItemName();
-    //     }  
-    //     return "All items have been listed.";
-    // }
-
-    // Getters and Setters
 
     public String getShopName() {
         return shopName;

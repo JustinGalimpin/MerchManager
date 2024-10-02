@@ -1,7 +1,7 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.*;
-// import java.util.ArrayList;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,12 +10,10 @@ public class TestShop {
     private Shop shop;
     private Item sword;
     private Item potion;
-    // private ArrayList<Item> inventory;
 
     @BeforeEach
     void runBefore() {
         shop = new Shop("Test Shop");
-        // inventory = new ArrayList<>();
         sword = new Item("Sword", "Weapon", "Common", 10, "A basic sword.");
         potion = new Item("Health Potion", "Consumable", "Common", 50, "Cures your wounds.");
     }
@@ -63,6 +61,28 @@ public class TestShop {
         shop.sellItem(potion);
         assertEquals(0, shop.getInventorySize());
         assertEquals(60, shop.getIncome());
+    }
+
+    @Test
+    void testGetInventorySameInventory() {
+        ArrayList<Item> expectedInventory = new ArrayList<>();
+        expectedInventory.add(sword);
+        expectedInventory.add(potion);
+
+        shop.addItem(sword);
+        shop.addItem(potion);
+        assertEquals(expectedInventory, shop.getInventory());
+    }
+
+    @Test
+    void testGetInventoryDiffInventory() {
+        ArrayList<Item> expectedInventory = new ArrayList<>();
+        expectedInventory.add(potion);
+        expectedInventory.add(sword);
+
+        shop.addItem(sword);
+        shop.addItem(potion);
+        assertNotEquals(expectedInventory, shop.getInventory());
     }
 
 }
