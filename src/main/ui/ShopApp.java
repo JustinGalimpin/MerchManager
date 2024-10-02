@@ -82,12 +82,13 @@ public class ShopApp {
         System.out.println("\tq -> Leave the Shop");
     }
 
-    // REQUIRES: itemName, type, quality, price, and and description
+    // REQUIRES: type, quality, price, and and description
     //           are non-empty Strings (or int in the case of price)
     //           itemName is not one that already exists in the inventory
     // MODIFIES: this, inventory
     // EFFECTS: processes user input for a new item and
     //          adds the item to the Shop's inventory
+    // Ask TA: Should this be a singular method or broken up into multiple
     @SuppressWarnings("methodlength")
     public void addNewItem() {
         System.out.println("Enter item name:");
@@ -98,7 +99,7 @@ public class ShopApp {
 
         System.out.println("Enter item quality:");
         String quality = scanner.nextLine();
-
+    // Ask TA: Should things like this be tested via the code directly
         System.out.println("Enter item price (integer value):");
         int price = Integer.valueOf(scanner.nextLine());
 
@@ -121,7 +122,6 @@ public class ShopApp {
     public void sellAnItem() {
         System.out.println("What is the name of the item you want to buy?");
         String itemToBuy = scanner.nextLine();
-
         ArrayList<Item> inventory = firstShop.getInventory();
         
         for (Item item : inventory) {
@@ -139,7 +139,6 @@ public class ShopApp {
     public void searchForItemToMod() {
         System.out.println("What is the name of the item you want to modify?");
         String itemToModify = scanner.nextLine();
-
         ArrayList<Item> inventory = firstShop.getInventory();
 
         for (Item item : inventory) {
@@ -175,6 +174,7 @@ public class ShopApp {
     // MODIFIES: this, item
     // EFFECT: Replaces the item's current name, price, or description
     //         with a new name, item, or description
+    // Ask TA: Should this be a singular method or broken up into multiple
     public void modifyAnItem(Item item) {
         System.out.println("Do you want to change the name, price, or description?");
         String modifyCommand = scanner.nextLine();
