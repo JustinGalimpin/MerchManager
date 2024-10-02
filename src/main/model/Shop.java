@@ -17,11 +17,25 @@ public class Shop {
         this.income = 0;
     }
 
-    // REQUIRES: item does not already exist in the shop
     // MODIFIES: this
-    // EFFECTS: adds item to inventory
+    // EFFECTS: checks if an item with the same name alrady exists,
+    //          if it does, it fails to add the new item to the inventory
+    //          otherwise, it adds the new item to inventory
     public void addItem(Item item) {
-        inventory.add(item);
+        boolean exists = false;
+
+        for (Item i : inventory) {
+            if (i.getItemName().equals(item.getItemName())) {
+                exists = true;
+                break;
+            }
+        }
+
+        if (!exists) {
+            inventory.add(item);
+        } else {
+            System.out.println("Error! Item name already exists in inventory");
+        }
     }
 
     // REQUIRES: inventory contains the given item

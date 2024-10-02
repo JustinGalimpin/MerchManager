@@ -196,7 +196,6 @@ public class ShopApp {
         }
     }
 
-
     // EFFECT: Prints out the names of all items in the Shop,
     //         otherwise, tells the user the Shop is empty
     public void viewInventory() {
