@@ -1,19 +1,19 @@
 package model;
 
-// Represents an item having a name, type, rarity, cost, and description
+// Represents an item having a name, type, quality, cost, and description
 public class Item {
     private String itemName;
     private String type;
-    private String rarity;
+    private String quality;
     private int price;
     private String description;
 
     // REQUIRES: itemName is not an empty string, cost > 0
-    // EFFECTS: constructs an with a given, type, rarity, cost, and description
-    public Item(String itemName, String type, String rarity, int price, String description) {
+    // EFFECTS: constructs an with a given, type, quality, cost, and description
+    public Item(String itemName, String type, String quality, int price, String description) {
         this.itemName = itemName;
         this.type = type;
-        this.rarity = rarity;
+        this.quality = quality;
         this.price = price;
         this.description = description;
     }
@@ -28,8 +28,8 @@ public class Item {
         return this.type;
     }
 
-    public String getRarity() {
-        return this.rarity;
+    public String getQuality() {
+        return this.quality;
     }
 
     public int getPrice() {

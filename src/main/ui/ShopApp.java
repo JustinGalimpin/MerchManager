@@ -58,9 +58,11 @@ public class ShopApp {
         } else if (command.equals("s")) {
             sellAnItem();
         } else if (command.equals("m")) {
-            searchForItem();
-        } else if (command.equals("v")) {
+            searchForItemToMod();
+        } else if (command.equals("l")) {
             viewInventory();
+        } else if (command.equals("d")) {
+            viewItemDetails();
         } else if (command.equals("$")) {
             System.out.println("Total Income: " + firstShop.getIncome());
         } else {
@@ -74,13 +76,15 @@ public class ShopApp {
         System.out.println("\ta -> Add an item to the Shop");
         System.out.println("\ts -> Sell an item from the Shop");
         System.out.println("\tm -> Modify an item from the Shop");
-        System.out.println("\tv -> View the list of items in the Shop");
+        System.out.println("\tl -> View the list of items in the Shop");
+        System.out.println("\td -> View the details of a specific item");
         System.out.println("\t$ -> View the Shop's total income");
         System.out.println("\tq -> Leave the Shop");
     }
 
-    // REQUIRES: itemName, type, rarity, price, and and description
+    // REQUIRES: itemName, type, quality, price, and and description
     //           are non-empty Strings (or int in the case of price)
+    //           itemName is not one that already exists in the inventory
     // MODIFIES: this, inventory
     // EFFECTS: processes user input for a new item and
     //          adds the item to the Shop's inventory
@@ -92,17 +96,16 @@ public class ShopApp {
         System.out.println("Enter item type:");
         String type = scanner.nextLine();
 
-        System.out.println("Enter item rarity:");
-        String rarity = scanner.nextLine();
+        System.out.println("Enter item quality:");
+        String quality = scanner.nextLine();
 
         System.out.println("Enter item price (integer value):");
-        int price = scanner.nextInt();
-        scanner.nextLine(); // gets the remaining newline character
+        int price = Integer.valueOf(scanner.nextLine());
 
         System.out.println("Enter item description:");
         String description = scanner.nextLine();
 
-        Item newItem = new Item(itemName, type, rarity, price, description);
+        Item newItem = new Item(itemName, type, quality, price, description);
         firstShop.addItem(newItem);
 
         System.out.println(itemName + " has been added to the shop!");
@@ -127,10 +130,10 @@ public class ShopApp {
         }      
     }
 
-    // REQUIRES: item exists in inventory
+    // REQUIRES: inventory is not empty, item exists in inventory
     // MODIFIES: this, item
     // EFFECTS: searches for an item in the inventory to be modified
-    public void searchForItem() {
+    public void searchForItemToMod() {
         System.out.println("What is the name of the item you want to modify?");
         String itemToModify = scanner.nextLine();
 
@@ -141,6 +144,28 @@ public class ShopApp {
                 modifyAnItem(item);
             }
         }          
+    }
+
+    // REQUIRES: item exists in inventory (if the inventory is not empty)
+    // EFFECTS: search for item in inventory, then
+    //          prints out all qualities of the given item
+    public void viewItemDetails() {
+        ArrayList<Item> inventory = firstShop.getInventory();
+        if (inventory.isEmpty()) {
+            System.out.println("The shop has nothing to view!");
+        } else {
+            System.out.println("What is the name of the item you want to view?");
+            String itemToView = scanner.nextLine();
+
+            for (Item item : inventory) {
+                if (item.getItemName().equals(itemToView)) {
+                    System.out.println("Item Name: " + item.getItemName());
+                    System.out.println("Price: " + item.getPrice());
+                    System.out.println("Quality: " + item.getQuality());
+                    System.out.println("Description: " + item.getDescription());
+                }
+            }        
+        }
     }
 
     // REQUIRES: newName, newPrice, and/or newDescription are non-empty

@@ -18,7 +18,7 @@ public class TestItem {
     void testConstructor() {
         assertEquals("Sword", sword.getItemName());
         assertEquals("Weapon", sword.getType());
-        assertEquals("Common", sword.getRarity());
+        assertEquals("Common", sword.getQuality());
         assertEquals(10, sword.getPrice());
         assertEquals("A basic sword.", sword.getDescription());
     }
