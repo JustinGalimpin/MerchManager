@@ -58,7 +58,7 @@ public class ShopApp {
         } else if (command.equals("s")) {
             sellAnItem();
         } else if (command.equals("m")) {
-            modifyAnItem();
+            searchForItem();
         } else if (command.equals("v")) {
             viewInventory();
         } else if (command.equals("$")) {
@@ -127,11 +127,48 @@ public class ShopApp {
         }      
     }
 
+    // REQUIRES: Inventory is not empty
     // MODIFIES: this, item
     // EFFECTS: searches for an item in the inventory,
     //          if the item exists, replace its current name, price, or description
     //          with a new appropriate name, price, or description
-    public void modifyAnItem() {
+    public void searchForItem() {
+        System.out.println("What is the name of the item you want to modify?");
+        String itemToModify = scanner.nextLine();
+
+        ArrayList<Item> inventory = firstShop.getInventory();
+
+        for (Item item : inventory) {
+            if (item.getItemName().equals(itemToModify)) {
+                modifyAnItem(item);
+            }
+        }      
+    }
+
+    public void modifyAnItem(Item item) {
+        System.out.println("Do you want to change the name, price, or description?");
+        String modifyCommand = scanner.nextLine();
+        if (modifyCommand.equals("name")) {
+            modifyName(item);
+        } else if (modifyCommand.equals("price")) {
+            modifyPrice(item);
+        } else if (modifyCommand.equals("description")) {
+            modifyDescription(item);
+        } else { 
+            System.out.println("Option not valid, try again!");
+            modifyAnItem(item);
+        }
+    }
+
+    private void modifyName(Item item) {
+        System.out.println("What item do you want to change?");
+    }
+
+    private void modifyPrice(Item item) {
+
+    }
+
+    private void modifyDescription(Item item) {
 
     }
 
