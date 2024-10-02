@@ -32,6 +32,14 @@ public class TestShop {
     }
 
     @Test
+    void testAddItemWithSameName() {
+        shop.addItem(sword);
+        assertEquals(1, shop.getInventorySize());
+        shop.addItem(sword);
+        assertEquals(1, shop.getInventorySize());
+    }
+
+    @Test
     void testAddMultipleItems() {
         shop.addItem(sword);
         assertEquals(1, shop.getInventorySize());
