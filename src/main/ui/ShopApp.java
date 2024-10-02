@@ -108,7 +108,7 @@ public class ShopApp {
         System.out.println(itemName + " has been added to the shop!");
     }
 
-    // REQUIRES: item exists in the Shop
+    // REQUIRES: Item name exists in the Shop
     // MODIFIES: this, inventory
     // EFFECTS: searches for an item in the inventory, sells (removes) the item
     //          and adds its price to the shops income
@@ -127,11 +127,9 @@ public class ShopApp {
         }      
     }
 
-    // REQUIRES: Inventory is not empty
+    // REQUIRES: item exists in inventory
     // MODIFIES: this, item
-    // EFFECTS: searches for an item in the inventory,
-    //          if the item exists, replace its current name, price, or description
-    //          with a new appropriate name, price, or description
+    // EFFECTS: searches for an item in the inventory to be modified
     public void searchForItem() {
         System.out.println("What is the name of the item you want to modify?");
         String itemToModify = scanner.nextLine();
@@ -142,35 +140,37 @@ public class ShopApp {
             if (item.getItemName().equals(itemToModify)) {
                 modifyAnItem(item);
             }
-        }      
+        }          
     }
 
+    // REQUIRES: newName, newPrice, and/or newDescription are non-empty
+    // MODIFIES: this, item
+    // EFFECT: Replaces the item's current name, price, or description
+    //         with a new name, item, or description
     public void modifyAnItem(Item item) {
         System.out.println("Do you want to change the name, price, or description?");
         String modifyCommand = scanner.nextLine();
         if (modifyCommand.equals("name")) {
-            modifyName(item);
+            System.out.println("Please enter new name:");
+            String newName = scanner.nextLine();
+            item.setItemName(newName);
+            System.out.println("Item is now named " + item.getItemName() + "!");
         } else if (modifyCommand.equals("price")) {
-            modifyPrice(item);
+            System.out.println("Please enter new price:");
+            String newPrice = scanner.nextLine();
+            item.setPrice(Integer.valueOf(newPrice));
+            System.out.println(item.getItemName() + " now costs " + item.getPrice() + "!");
         } else if (modifyCommand.equals("description")) {
-            modifyDescription(item);
+            System.out.println("Please enter new description:");
+            String newDescription = scanner.nextLine();
+            item.setDescription(newDescription);
+            System.out.println("New description for " + item.getItemName() + ": " + item.getDescription());
         } else { 
             System.out.println("Option not valid, try again!");
             modifyAnItem(item);
         }
     }
 
-    private void modifyName(Item item) {
-        System.out.println("What item do you want to change?");
-    }
-
-    private void modifyPrice(Item item) {
-
-    }
-
-    private void modifyDescription(Item item) {
-
-    }
 
     // EFFECT: Prints out the names of all items in the Shop,
     //         otherwise, tells the user the Shop is empty
