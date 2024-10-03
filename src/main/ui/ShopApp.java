@@ -24,21 +24,17 @@ public class ShopApp {
     private void runShop() {
         boolean keepGoing = true;
         String command = null;
-
         init();
-
         while (keepGoing) {
             displayMenu();
             command = scanner.nextLine();
             command = command.toLowerCase();
-
             if (command.equals("q")) {
                 keepGoing = false;
             } else {
                 processCommand(command);
             }
         }
-
         System.out.println("\nThanks for visiting!");
     }
 
@@ -85,7 +81,7 @@ public class ShopApp {
         System.out.println("\tq -> Leave the Shop");
     }
 
-    // REQUIRES: itemName, type, quality, and description non-empty Strings
+    // REQUIRES: itemName, type, quality, and description are non-empty Strings
     //           itemName is not one that already exists in the inventory
     //           price > 0 
     // MODIFIES: this, inventory
@@ -115,7 +111,7 @@ public class ShopApp {
     // EFFECTS: searches for an item in the inventory, sells (removes) the item
     //          and adds its price to the shops income
     public void sellAnItem() {
-        System.out.println("What is the name of the item you want to buy?");
+        System.out.println("What is the name of the item you want to sell?");
         String itemToBuy = scanner.nextLine();
         ArrayList<Item> inventory = firstShop.getInventory();
         for (Item item : inventory) {
@@ -139,27 +135,6 @@ public class ShopApp {
                 modifyAnItem(item);
             }
         }          
-    }
-
-    // REQUIRES: item exists in inventory (if the inventory is not empty)
-    // EFFECTS: search for item in inventory, then
-    //          prints out all qualities of the given item
-    public void viewItemDetails() {
-        ArrayList<Item> inventory = firstShop.getInventory();
-        if (inventory.isEmpty()) {
-            System.out.println("The shop has nothing to view!");
-        } else {
-            System.out.println("What is the name of the item you want to view?");
-            String itemToView = scanner.nextLine();
-            for (Item item : inventory) {
-                if (item.getItemName().equals(itemToView)) {
-                    System.out.println("Item Name: " + item.getItemName());
-                    System.out.println("Price: " + item.getPrice());
-                    System.out.println("Quality: " + item.getQuality());
-                    System.out.println("Description: " + item.getDescription());
-                }
-            }        
-        }
     }
 
     // REQUIRES: newName, newPrice, and/or newDescription are non-empty
@@ -196,6 +171,27 @@ public class ShopApp {
                     item.setDescription(newValue);
                 }
                 break;
+        }
+    }
+
+    // REQUIRES: item exists in inventory (if the inventory is not empty)
+    // EFFECTS: search for item in inventory, then
+    //          prints out all qualities of the given item
+    public void viewItemDetails() {
+        ArrayList<Item> inventory = firstShop.getInventory();
+        if (inventory.isEmpty()) {
+            System.out.println("The shop has nothing to view!");
+        } else {
+            System.out.println("What is the name of the item you want to view?");
+            String itemToView = scanner.nextLine();
+            for (Item item : inventory) {
+                if (item.getItemName().equals(itemToView)) {
+                    System.out.println("Item Name: " + item.getItemName());
+                    System.out.println("Price: " + item.getPrice());
+                    System.out.println("Quality: " + item.getQuality());
+                    System.out.println("Description: " + item.getDescription());
+                }
+            }        
         }
     }
 
