@@ -53,21 +53,32 @@ public class ShopApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("a")) {
-            addNewItem();
-        } else if (command.equals("s")) {
-            sellAnItem();
-        } else if (command.equals("m")) {
-            searchForItemToMod();
-        } else if (command.equals("l")) {
-            viewInventory();
-        } else if (command.equals("d")) {
-            viewItemDetails();
-        } else if (command.equals("$")) {
-            System.out.println("Total Income: " + firstShop.getIncome());
-        } else {
-            System.out.println("Selection not valid; try again!");
+        switch (command) {
+            case "a":
+                addNewItem();
+                break;
+            case "s":
+                sellAnItem();
+                break;
+            case "m":
+                searchForItemToMod();
+                break;
+            case "l":
+                viewInventory();
+                break;
+            case "d":
+                viewItemDetails();
+                break;
+            case "$":
+                System.out.println("Total Income: " + firstShop.getIncome());
+                break;
+            case "q":
+                break;
+            default:
+                System.out.println("Selection not valid; try again!");
+                break;
         }
+        
     }
 
     // EFFECTS: displays menu of options to user
@@ -82,32 +93,25 @@ public class ShopApp {
         System.out.println("\tq -> Leave the Shop");
     }
 
-    // REQUIRES: type, quality, price, and and description
-    //           are non-empty Strings (or int in the case of price)
+    // REQUIRES: itemName, type, quality, and description non-empty Strings
     //           itemName is not one that already exists in the inventory
+    //           price > 0 
     // MODIFIES: this, inventory
     // EFFECTS: processes user input for a new item and
     //          adds the item to the Shop's inventory
-    // Ask TA: Should this be a singular method or broken up into multiple
-    @SuppressWarnings("methodlength")
     public void addNewItem() {
         System.out.println("Enter item name:");
         String itemName = scanner.nextLine();
-
         System.out.println("Enter item type:");
         String type = scanner.nextLine();
-
         System.out.println("Enter item quality:");
         String quality = scanner.nextLine();
-    // Ask TA: Should things like this be tested via the code directly
         System.out.println("Enter item price (integer value):");
         int price = Integer.valueOf(scanner.nextLine());
-
         System.out.println("Enter item description:");
         String description = scanner.nextLine();
 
         Item newItem = new Item(itemName, type, quality, price, description);
-
         if (firstShop.addItem(newItem)) {
             System.out.println("Item has been added to the shop!");
         } else {
@@ -174,8 +178,6 @@ public class ShopApp {
     // MODIFIES: this, item
     // EFFECT: Replaces the item's current name, price, or description
     //         with a new name, item, or description
-    @SuppressWarnings("methodlength")
-    // Ask TA: Should this be a singular method or broken up into multiple
     public void modifyAnItem(Item item) {
         System.out.println("Do you want to change the name, price, or description?");
         String modifyCommand = scanner.nextLine();

@@ -8,8 +8,8 @@ public class Item {
     private int price;
     private String description;
 
-    // REQUIRES: itemName is not an empty string, cost > 0
-    // EFFECTS: constructs an with a given, type, quality, cost, and description
+    // REQUIRES: itemName, type, quality, and description are not an empty string, price > 0
+    // EFFECTS: constructs an with a given, type, quality, price, and description
     public Item(String itemName, String type, String quality, int price, String description) {
         this.itemName = itemName;
         this.type = type;
