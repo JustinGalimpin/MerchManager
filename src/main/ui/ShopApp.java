@@ -175,6 +175,7 @@ public class ShopApp {
     // MODIFIES: this, item
     // EFFECT: Replaces the item's current name, price, or description
     //         with a new name, item, or description
+    @SuppressWarnings("methodlength")
     public void modifyAnItem(Item item) {
         System.out.println("Do you want to change the name, price, or description?");
         String modifyCommand = scanner.nextLine();

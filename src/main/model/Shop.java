@@ -17,6 +17,7 @@ public class Shop {
         this.income = 0;
     }
 
+    // REQUIRES: itemName is not an empty string
     // MODIFIES: this
     // EFFECTS: checks if an item with the same name alrady exists,
     //          if it does, it fails to add the new item to the inventory
