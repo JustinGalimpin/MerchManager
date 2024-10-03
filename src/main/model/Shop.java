@@ -20,11 +20,9 @@ public class Shop {
     // REQUIRES: itemName is not an empty string
     // MODIFIES: this
     // EFFECTS: checks if an item with the same name alrady exists,
-    //          if it does, it fails to add the new item to the inventory
-    //          otherwise, it adds the new item to inventory
+    //          if it does, returns false, otherwise returns true and adds item to inventory
     public boolean addItem(Item item) {
         boolean exists = false;
-
         for (Item i : inventory) {
             if (i.getItemName().equals(item.getItemName())) {
                 exists = true;

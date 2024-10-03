@@ -54,31 +54,23 @@ public class ShopApp {
     // EFFECTS: processes user command
     private void processCommand(String command) {
         switch (command) {
-            case "a":
-                addNewItem();
+            case "a": addNewItem();
                 break;
-            case "s":
-                sellAnItem();
+            case "s": sellAnItem();
                 break;
-            case "m":
-                searchForItemToMod();
+            case "m": searchForItemToMod();
                 break;
-            case "l":
-                viewInventory();
+            case "l": viewInventory();
                 break;
-            case "d":
-                viewItemDetails();
+            case "d": viewItemDetails();
                 break;
-            case "$":
-                System.out.println("Total Income: " + firstShop.getIncome());
+            case "$": System.out.println("Total Income: $" + firstShop.getIncome());
                 break;
             case "q":
                 break;
-            default:
-                System.out.println("Selection not valid; try again!");
+            default: System.out.println("Selection not valid; try again!");
                 break;
-        }
-        
+        }   
     }
 
     // EFFECTS: displays menu of options to user
@@ -110,7 +102,6 @@ public class ShopApp {
         int price = Integer.valueOf(scanner.nextLine());
         System.out.println("Enter item description:");
         String description = scanner.nextLine();
-
         Item newItem = new Item(itemName, type, quality, price, description);
         if (firstShop.addItem(newItem)) {
             System.out.println("Item has been added to the shop!");
@@ -119,7 +110,7 @@ public class ShopApp {
         }
     }
 
-    // REQUIRES: Item name exists in the Shop
+    // REQUIRES: item exists in inventory
     // MODIFIES: this, inventory
     // EFFECTS: searches for an item in the inventory, sells (removes) the item
     //          and adds its price to the shops income
@@ -127,7 +118,6 @@ public class ShopApp {
         System.out.println("What is the name of the item you want to buy?");
         String itemToBuy = scanner.nextLine();
         ArrayList<Item> inventory = firstShop.getInventory();
-        
         for (Item item : inventory) {
             if (item.getItemName().equals(itemToBuy)) {
                 System.out.println(item.getItemName() + " has been sold!");
@@ -137,14 +127,13 @@ public class ShopApp {
         }      
     }
 
-    // REQUIRES: inventory is not empty, item exists in inventory
+    // REQUIRES: inventory is not empty, inventory contains item
     // MODIFIES: this, item
     // EFFECTS: searches for an item in the inventory to be modified
     public void searchForItemToMod() {
         System.out.println("What is the name of the item you want to modify?");
         String itemToModify = scanner.nextLine();
         ArrayList<Item> inventory = firstShop.getInventory();
-
         for (Item item : inventory) {
             if (item.getItemName().equals(itemToModify)) {
                 modifyAnItem(item);
@@ -162,7 +151,6 @@ public class ShopApp {
         } else {
             System.out.println("What is the name of the item you want to view?");
             String itemToView = scanner.nextLine();
-
             for (Item item : inventory) {
                 if (item.getItemName().equals(itemToView)) {
                     System.out.println("Item Name: " + item.getItemName());
@@ -215,12 +203,11 @@ public class ShopApp {
     //         otherwise, tells the user the Shop is empty
     public void viewInventory() {
         ArrayList<Item> inventory = firstShop.getInventory();
-
         if (inventory.isEmpty()) {
             System.out.println("The shop has nothing for sale!");
         } else {
             for (Item item : inventory) {
-                System.out.println("Item for sale: " + item.getItemName() + " for " + item.getPrice() + " gold.");
+                System.out.println("Item for sale: " + item.getItemName() + " for $" + item.getPrice());
             }      
         }
     }
