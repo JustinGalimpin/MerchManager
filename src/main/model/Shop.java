@@ -29,7 +29,6 @@ public class Shop {
                 break;
             }
         }
-
         if (!exists) {
             inventory.add(item);
             return true;
@@ -62,5 +61,4 @@ public class Shop {
     public int getIncome() {
         return income;
     }
-
 }

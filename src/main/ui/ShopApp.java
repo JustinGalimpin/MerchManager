@@ -71,7 +71,7 @@ public class ShopApp {
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
-        System.out.println("\nWelcome to the Shop! What would you like to do?");
+        System.out.println("\nWelcome to " + firstShop.getShopName() + "! What would you like to do?");
         System.out.println("\ta -> Add an item to the Shop");
         System.out.println("\ts -> Sell an item from the Shop");
         System.out.println("\tm -> Modify an item from the Shop");
