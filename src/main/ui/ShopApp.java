@@ -176,29 +176,38 @@ public class ShopApp {
 
     // REQUIRES: newName, newPrice, and/or newDescription are non-empty
     // MODIFIES: this, item
-    // EFFECT: Replaces the item's current name, price, or description
-    //         with a new name, item, or description
+    // EFFECT: prompts the user for which field to modify
     public void modifyAnItem(Item item) {
         System.out.println("Do you want to change the name, price, or description?");
-        String modifyCommand = scanner.nextLine();
-        if (modifyCommand.equals("name")) {
-            System.out.println("Please enter new name:");
-            String newName = scanner.nextLine();
-            item.setItemName(newName);
-            System.out.println("Item is now named " + item.getItemName() + "!");
-        } else if (modifyCommand.equals("price")) {
-            System.out.println("Please enter new price:");
-            String newPrice = scanner.nextLine();
-            item.setPrice(Integer.valueOf(newPrice));
-            System.out.println(item.getItemName() + " now costs " + item.getPrice() + "!");
-        } else if (modifyCommand.equals("description")) {
-            System.out.println("Please enter new description:");
-            String newDescription = scanner.nextLine();
-            item.setDescription(newDescription);
-            System.out.println("New description for " + item.getItemName() + ": " + item.getDescription());
-        } else { 
+        String modifyCommand = scanner.nextLine().toLowerCase();
+        if (modifyCommand.equals("name") || modifyCommand.equals("price") || modifyCommand.equals("description")) {
+            modifyItemField(item, modifyCommand);
+        } else {
             System.out.println("Option not valid, try again!");
             modifyAnItem(item);
+        }
+    }
+
+    // MODIFIES: this, item
+    // EFFECTS: Updates the selected field of the item based on user input
+    private void modifyItemField(Item item, String field) {
+        String newValue;
+        switch (field) {
+            case "price":
+                System.out.println("Please enter new price: ");
+                newValue = scanner.nextLine();
+                item.setPrice(Integer.parseInt(newValue));
+                break;
+            case "name":
+            case "description":
+                System.out.println("Please enter new " + field + ": ");
+                newValue = scanner.nextLine();
+                if (field.equals("name")) {
+                    item.setItemName(newValue);
+                } else {
+                    item.setDescription(newValue);
+                }
+                break;
         }
     }
 
