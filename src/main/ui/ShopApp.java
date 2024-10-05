@@ -84,7 +84,7 @@ public class ShopApp {
     // REQUIRES: itemName, type, quality, and description are non-empty Strings
     //           itemName is not one that already exists in the inventory
     //           price > 0 
-    // MODIFIES: this, inventory
+    // MODIFIES: this, item
     // EFFECTS: processes user input for a new item and
     //          adds the item to the Shop's inventory
     public void addNewItem() {
@@ -107,7 +107,7 @@ public class ShopApp {
     }
 
     // REQUIRES: item exists in inventory
-    // MODIFIES: this, inventory
+    // MODIFIES: this
     // EFFECTS: searches for an item in the inventory, sells (removes) the item
     //          and adds its price to the shops income
     public void sellAnItem() {
@@ -124,7 +124,6 @@ public class ShopApp {
     }
 
     // REQUIRES: inventory is not empty, inventory contains item
-    // MODIFIES: this, item
     // EFFECTS: searches for an item in the inventory to be modified
     public void searchForItemToMod() {
         System.out.println("What is the name of the item you want to modify?");
@@ -132,26 +131,25 @@ public class ShopApp {
         ArrayList<Item> inventory = firstShop.getInventory();
         for (Item item : inventory) {
             if (item.getItemName().equals(itemToModify)) {
-                modifyAnItem(item);
+                requestItemField(item);
             }
         }          
     }
 
     // REQUIRES: newName, newPrice, and/or newDescription are non-empty
-    // MODIFIES: this, item
     // EFFECT: prompts the user for which field to modify
-    public void modifyAnItem(Item item) {
+    public void requestItemField(Item item) {
         System.out.println("Do you want to change the name, price, or description?");
         String modifyCommand = scanner.nextLine().toLowerCase();
         if (modifyCommand.equals("name") || modifyCommand.equals("price") || modifyCommand.equals("description")) {
             modifyItemField(item, modifyCommand);
         } else {
             System.out.println("Option not valid, try again!");
-            modifyAnItem(item);
+            requestItemField(item);
         }
     }
 
-    // MODIFIES: this, item
+    // MODIFIES: item
     // EFFECTS: Updates the selected field of the item based on user input
     private void modifyItemField(Item item, String field) {
         String newValue;
