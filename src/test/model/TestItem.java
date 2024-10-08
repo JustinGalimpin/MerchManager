@@ -24,24 +24,55 @@ public class TestItem {
     }
 
     @Test
-    void testSetItemName() {
-        assertEquals("Sword", sword.getItemName());
-        sword.setItemName("Fancy Sword");
+    void testUpdateItemFieldName() {
+        sword.updateItem("name", "Fancy Sword");
         assertEquals("Fancy Sword", sword.getItemName());
-    }
 
-    @Test
-    void testSetPrice() {
+        // Assert nothing else has been changed
+        assertEquals("Weapon", sword.getType());
+        assertEquals("Common", sword.getQuality());
         assertEquals(10, sword.getPrice());
-        sword.setPrice(20);
-        assertEquals(20, sword.getPrice());
+        assertEquals("A basic sword.", sword.getDescription());
     }
 
     @Test
-    void testSetDescription() {
+    void testUpdateItemFieldPrice() {
+        sword.updateItem("price", "100");
+        assertEquals(100, sword.getPrice());
+        // Assert nothing else has been changed
+        assertEquals("Sword", sword.getItemName());
+        assertEquals("Weapon", sword.getType());
+        assertEquals("Common", sword.getQuality());
         assertEquals("A basic sword.", sword.getDescription());
-        sword.setDescription("A really basic sword.");
-        assertEquals("A really basic sword.", sword.getDescription());
+    }
+
+    @Test
+    void testUpdateItemFieldPriceOne() {
+        sword.updateItem("price", "1");
+        assertEquals(1, sword.getPrice());
+    }
+
+    @Test
+    void testUpdateItemFieldDescription() {
+        sword.updateItem("description", "A nice sword.");
+        assertEquals("A nice sword.", sword.getDescription());
+        // Assert nothing else has been changed
+        assertEquals("Sword", sword.getItemName());
+        assertEquals("Weapon", sword.getType());
+        assertEquals(10, sword.getPrice());
+        assertEquals("Common", sword.getQuality());
+    }
+
+    @Test
+    void testInvalidField(){
+        sword.updateItem("quality", "Legendary");
+        sword.updateItem("type", "Shield");
+        // Assert nothing else has been changed
+        assertEquals("A basic sword.", sword.getDescription());
+        assertEquals("Sword", sword.getItemName());
+        assertEquals("Weapon", sword.getType());
+        assertEquals(10, sword.getPrice());
+        assertEquals("Common", sword.getQuality());
     }
 
 }

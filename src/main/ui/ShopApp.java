@@ -147,7 +147,7 @@ public class ShopApp {
         if (modifyCommand.equals("name") || modifyCommand.equals("price") || modifyCommand.equals("description")) {
             System.out.println("Enter the new value for " + modifyCommand + ":");
             String newValue = scanner.nextLine();
-            item.updateItemField(modifyCommand, newValue);
+            item.updateItem(modifyCommand, newValue);
             System.out.println(modifyCommand + " has been updated!");
         } else {
             System.out.println("Option not valid, try again!");

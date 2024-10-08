@@ -21,7 +21,7 @@ public class Item {
     // REQUIRES: newValue is a non-empty string
     // MODIFIES: this
     // EFFECTS: Updates the selected field of the item to the newValue
-    public void updateItemField(String field, String newValue) {
+    public void updateItem(String field, String newValue) {
         switch (field) {
             case "name":
                 setItemName(newValue);
