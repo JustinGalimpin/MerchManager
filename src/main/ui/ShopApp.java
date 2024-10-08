@@ -52,7 +52,7 @@ public class ShopApp {
         switch (command) {
             case "a": addNewItem();
                 break;
-            case "s": sellAnItem();
+            case "s": sellItem();
                 break;
             case "m": searchForItemToMod();
                 break;
@@ -110,20 +110,19 @@ public class ShopApp {
     // MODIFIES: this
     // EFFECTS: searches for an item in the inventory, sells (removes) the item
     //          and adds its price to the shops income
-    private void sellAnItem() {
+    private void sellItem() {
         System.out.println("What is the name of the item you want to sell?");
         String itemToBuy = scanner.nextLine();
         ArrayList<Item> inventory = firstShop.getInventory();
         for (Item item : inventory) {
             if (item.getItemName().equals(itemToBuy)) {
                 System.out.println(item.getItemName() + " has been sold!");
-                firstShop.sellItem(item);
+                firstShop.removeItem(item);
                 break;
             }
         }      
     }
 
-    // REQUIRES: inventory is not empty, inventory contains item
     // EFFECTS: searches for an item in the inventory to be modified
     private void searchForItemToMod() {
         System.out.println("What is the name of the item you want to modify?");
@@ -167,12 +166,11 @@ public class ShopApp {
             String itemToView = scanner.nextLine();
             for (Item item : inventory) {
                 if (item.getItemName().equals(itemToView)) {
-                    System.out.println("Item Name: " + item.getItemName());
-                    System.out.println("Price: " + item.getPrice());
-                    System.out.println("Quality: " + item.getQuality());
-                    System.out.println("Description: " + item.getDescription());
+                    System.out.println(item.getItemDetails());
+                    break;
                 }
             }        
+            System.out.println("Item does not exist!");
         }
     }
 

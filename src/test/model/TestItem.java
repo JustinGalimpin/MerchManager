@@ -24,6 +24,15 @@ public class TestItem {
     }
 
     @Test
+    void testGetItemDetails() {
+        String expectedDetails = "Item Name: Sword\n" +
+                                 "Price: 10\n" +
+                                 "Quality: Common\n" +
+                                 "Description: A basic sword.";
+        assertEquals(expectedDetails, sword.getItemDetails());
+    }
+
+    @Test
     void testUpdateItemFieldName() {
         sword.updateItem("name", "Fancy Sword");
         assertEquals("Fancy Sword", sword.getItemName());

@@ -41,7 +41,7 @@ public class Shop {
     // MODIFIES: this
     // EFFECTS: removes item from inventory,
     //          increases shop's income by item's cost
-    public void sellItem(Item item) {
+    public void removeItem(Item item) {
         this.income = this.income + item.getPrice();
         inventory.remove(item);
     }

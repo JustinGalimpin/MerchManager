@@ -51,7 +51,7 @@ public class TestShop {
     void testSellItem() {
         shop.addItem(sword);
         assertEquals(1, shop.getInventorySize());
-        shop.sellItem(sword);
+        shop.removeItem(sword);
         assertEquals(0, shop.getInventorySize());
         assertEquals(10, shop.getIncome());
     }
@@ -63,10 +63,10 @@ public class TestShop {
         shop.addItem(potion);
         assertEquals(2, shop.getInventorySize());
 
-        shop.sellItem(sword);
+        shop.removeItem(sword);
         assertEquals(1, shop.getInventorySize());
         assertEquals(10, shop.getIncome());
-        shop.sellItem(potion);
+        shop.removeItem(potion);
         assertEquals(0, shop.getInventorySize());
         assertEquals(60, shop.getIncome());
     }

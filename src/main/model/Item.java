@@ -9,7 +9,7 @@ public class Item {
     private String description;
 
     // REQUIRES: itemName, type, quality, and description are not an empty string, price > 0
-    // EFFECTS: constructs an with a given, type, quality, price, and description
+    // EFFECTS: constructs an item with a given, type, quality, price, and description
     public Item(String itemName, String type, String quality, int price, String description) {
         this.itemName = itemName;
         this.type = type;
@@ -37,6 +37,13 @@ public class Item {
 
     // Getters and Settters
 
+    public String getItemDetails() {
+        return "Item Name: " + getItemName() + "\n" +
+        "Price: " + getPrice() + "\n" +
+        "Quality: " + getQuality() + "\n" +
+        "Description: " + getDescription();
+    }
+
     public String getItemName() {
         return this.itemName;
     }
@@ -57,18 +64,21 @@ public class Item {
         return this.description;
     }
 
+    // REQUIRES: newName is a non-empty string
     // MODIFIES: this
     // EFFECT: replaces the item's current name with a new one
     public void setItemName(String newName) {
         this.itemName = newName;
     }
 
+    // REQUIRES: newPrice > 0
     // MODIFIES: this
     // EFFECT: replaces the item's current price with a new one
     public void setPrice(int newPrice) {
         this.price = newPrice;
     }
 
+    // REQUIRES: newDescription is a non-empty string
     // MODIFIES: this
     // EFFECT: replaces the item's current description with a new one
     public void setDescription(String newDescription) {
