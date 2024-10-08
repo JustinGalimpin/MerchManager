@@ -87,7 +87,7 @@ public class ShopApp {
     // MODIFIES: this, item
     // EFFECTS: processes user input for a new item and
     //          adds the item to the Shop's inventory
-    public void addNewItem() {
+    private void addNewItem() {
         System.out.println("Enter item name:");
         String itemName = scanner.nextLine();
         System.out.println("Enter item type:");
@@ -110,7 +110,7 @@ public class ShopApp {
     // MODIFIES: this
     // EFFECTS: searches for an item in the inventory, sells (removes) the item
     //          and adds its price to the shops income
-    public void sellAnItem() {
+    private void sellAnItem() {
         System.out.println("What is the name of the item you want to sell?");
         String itemToBuy = scanner.nextLine();
         ArrayList<Item> inventory = firstShop.getInventory();
@@ -125,57 +125,40 @@ public class ShopApp {
 
     // REQUIRES: inventory is not empty, inventory contains item
     // EFFECTS: searches for an item in the inventory to be modified
-    public void searchForItemToMod() {
+    private void searchForItemToMod() {
         System.out.println("What is the name of the item you want to modify?");
         String itemToModify = scanner.nextLine();
         ArrayList<Item> inventory = firstShop.getInventory();
         for (Item item : inventory) {
             if (item.getItemName().equals(itemToModify)) {
                 requestItemField(item);
+                return;
             }
-        }          
+        }    
+        System.out.println("Item not found in inventory!");      
     }
 
     // REQUIRES: newName, newPrice, and/or newDescription are non-empty
     // EFFECT: prompts the user for which field to modify
-    public void requestItemField(Item item) {
+    //         tells the user if the change was successful or not
+    private void requestItemField(Item item) {
         System.out.println("Do you want to change the name, price, or description?");
         String modifyCommand = scanner.nextLine().toLowerCase();
         if (modifyCommand.equals("name") || modifyCommand.equals("price") || modifyCommand.equals("description")) {
-            modifyItemField(item, modifyCommand);
+            System.out.println("Enter the new value for " + modifyCommand + ":");
+            String newValue = scanner.nextLine();
+            item.updateItemField(modifyCommand, newValue);
+            System.out.println(modifyCommand + " has been updated!");
         } else {
             System.out.println("Option not valid, try again!");
             requestItemField(item);
         }
     }
 
-    // MODIFIES: item
-    // EFFECTS: Updates the selected field of the item based on user input
-    private void modifyItemField(Item item, String field) {
-        String newValue;
-        switch (field) {
-            case "price":
-                System.out.println("Please enter new price: ");
-                newValue = scanner.nextLine();
-                item.setPrice(Integer.parseInt(newValue));
-                break;
-            case "name":
-            case "description":
-                System.out.println("Please enter new " + field + ": ");
-                newValue = scanner.nextLine();
-                if (field.equals("name")) {
-                    item.setItemName(newValue);
-                } else {
-                    item.setDescription(newValue);
-                }
-                break;
-        }
-    }
-
     // REQUIRES: item exists in inventory (if the inventory is not empty)
     // EFFECTS: search for item in inventory, then
     //          prints out all qualities of the given item
-    public void viewItemDetails() {
+    private void viewItemDetails() {
         ArrayList<Item> inventory = firstShop.getInventory();
         if (inventory.isEmpty()) {
             System.out.println("The shop has nothing to view!");
@@ -195,7 +178,7 @@ public class ShopApp {
 
     // EFFECT: Prints out the names of all items in the Shop,
     //         otherwise, tells the user the Shop is empty
-    public void viewInventory() {
+    private void viewInventory() {
         ArrayList<Item> inventory = firstShop.getInventory();
         if (inventory.isEmpty()) {
             System.out.println("The shop has nothing for sale!");

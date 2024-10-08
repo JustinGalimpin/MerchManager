@@ -18,6 +18,23 @@ public class Item {
         this.description = description;
     }
 
+    // REQUIRES: newValue is a non-empty string
+    // MODIFIES: this
+    // EFFECTS: Updates the selected field of the item to the newValue
+    public void updateItemField(String field, String newValue) {
+        switch (field) {
+            case "name":
+                setItemName(newValue);
+                break;
+            case "price":
+                setPrice(Integer.parseInt(newValue));
+                break;
+            case "description":
+                setDescription(newValue);
+                break;
+        }
+    }
+
     // Getters and Settters
 
     public String getItemName() {
