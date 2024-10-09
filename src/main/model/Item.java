@@ -38,10 +38,13 @@ public class Item {
     // Getters and Settters
 
     public String getItemDetails() {
-        return "Item Name: " + getItemName() + "\n" +
-        "Price: " + getPrice() + "\n" +
-        "Quality: " + getQuality() + "\n" +
-        "Description: " + getDescription();
+        return "Item Name: " + getItemName() + "\n" 
+            +
+            "Price: " + getPrice() + "\n" 
+            +
+            "Quality: " + getQuality() + "\n" 
+            +
+            "Description: " + getDescription();
     }
 
     public String getItemName() {
