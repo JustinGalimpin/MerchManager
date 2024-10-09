@@ -167,7 +167,7 @@ public class ShopApp {
             for (Item item : inventory) {
                 if (item.getItemName().equals(itemToView)) {
                     System.out.println(item.getItemDetails());
-                    break;
+                    return;
                 }
             }        
             System.out.println("Item does not exist!");
