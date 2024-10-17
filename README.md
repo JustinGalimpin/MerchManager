@@ -22,3 +22,8 @@ This project is of interest to me because I find the application has the potenti
 - As a user, I want to be able to **select an item from the shop and modify one of its previous assigned qualities**
 - As a user, I want to be able to **sell (remove) an item from the shop**
 - As a user, I want to be able to **track the total income of the shop** based off of items that are sold (removed)
+
+## User Stories for Phase 2
+- As a user, I want to be able to **have the option to save the current state of my shop**
+
+- As a user, I want to be able to **have the option to reload a previously saved shop state** and continue from where I left off
