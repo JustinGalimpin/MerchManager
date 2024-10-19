@@ -25,5 +25,4 @@ This project is of interest to me because I find the application has the potenti
 
 ## User Stories for Phase 2
 - As a user, I want to be able to **have the option to save the current state of my shop**
-
 - As a user, I want to be able to **have the option to reload a previously saved shop state** and continue from where I left off
