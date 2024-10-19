@@ -42,7 +42,8 @@ public class TestJsonReader extends TestJson {
             assertEquals("My Test Shop", shop.getShopName());
             List<Item> items = shop.getInventory();
             assertEquals(2, items.size());
-            // checkItem();
+            checkItem("Sword", "Weapon", "Good", 20, "A good sword.", items.get(0));
+            checkItem("Potion", "Consumable", "High", 50, "A potion to cure your injuries.", items.get(1));
             // checkItem();
         } catch (IOException e) {
             fail("Couldn't read from file");
