@@ -2,17 +2,27 @@ package ui;
 
 import model.Item;
 import model.Shop;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // Shop application
 // Code for the following methods are attributed to the TellerApp example on edX:
 // runShop(), processCommand(), displayMenu()
+// Code for the following methods are attributed to the JsonSerializationDemo example on edX:
+// saveShop(), loadShop()
 
 public class ShopApp {
+    private static final String JSON_STORE = "./data/shop.json";
     private Shop firstShop;
     private Scanner scanner;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
 
     // EFFECTS: Runs the shop application
     public ShopApp() {
@@ -44,6 +54,8 @@ public class ShopApp {
         firstShop = new Shop("The First Shop");
         scanner = new Scanner(System.in);
         scanner.useDelimiter("\r?\n|\r");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // MODIFIES: this
@@ -64,6 +76,10 @@ public class ShopApp {
                 break;
             case "q":
                 break;
+            case "save": saveShop();
+                break;
+            case "load": loadShop();
+                break;
             default: System.out.println("Selection not valid; try again!");
                 break;
         }   
@@ -78,6 +94,8 @@ public class ShopApp {
         System.out.println("\tl -> View the list of items in the Shop");
         System.out.println("\td -> View the details of a specific item");
         System.out.println("\t$ -> View the Shop's total income");
+        System.out.println("\tsave -> Save the current shop to file");
+        System.out.println("\tload -> Load shop from file");
         System.out.println("\tq -> Leave the Shop");
     }
 
@@ -184,6 +202,29 @@ public class ShopApp {
             for (Item item : inventory) {
                 System.out.println("Item for sale: " + item.getItemName() + " for $" + item.getPrice());
             }      
+        }
+    }
+
+    // EFFECTS: saves the shop to file
+    private void saveShop() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(firstShop);
+            jsonWriter.close();
+            System.out.println("Saved " + firstShop.getShopName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads shop from file
+    private void loadShop() {
+        try {
+            firstShop = jsonReader.read();
+            System.out.println("Loaded " + firstShop.getShopName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }
