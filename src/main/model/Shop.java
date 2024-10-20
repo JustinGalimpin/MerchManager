@@ -2,8 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a shop having a name, inventory, and total money earned
-public class Shop {
+public class Shop implements Writable {
     private String shopName;
     private ArrayList<Item> inventory;
     private int income;
@@ -44,6 +49,25 @@ public class Shop {
     public void removeItem(Item item) {
         this.income = this.income + item.getPrice();
         inventory.remove(item);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", shopName);
+        json.put("items", itemsToJson());
+        return json;
+    }
+
+        // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray itemsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Item item : inventory) {
+            jsonArray.put(item.toJson());
+        }
+
+        return jsonArray;
     }
 
     public String getShopName() {

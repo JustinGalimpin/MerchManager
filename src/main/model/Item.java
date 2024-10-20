@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents an item having a name, type, quality, cost, and description
-public class Item {
+public class Item implements Writable {
     private String itemName;
     private String type;
     private String quality;
@@ -33,6 +37,17 @@ public class Item {
                 setDescription(newValue);
                 break;
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("itemName", itemName);
+        json.put("type", type);
+        json.put("quality", quality);
+        json.put("price", price);
+        json.put("description", description);
+        return json;
     }
 
     // Getters and Settters
