@@ -1,0 +1,19 @@
+{
+    "name": "My Test Shop",
+    "items": [
+        {
+            "itemName": "Potion",
+            "price": 50,
+            "description": "A potion to cure your injuries.",
+            "type": "Consumable",
+            "quality": "High"
+        },
+        {
+            "itemName": "Sword",
+            "price": 20,
+            "description": "A good sword.",
+            "type": "Weapon",
+            "quality": "Good"
+        }
+    ]
+}
