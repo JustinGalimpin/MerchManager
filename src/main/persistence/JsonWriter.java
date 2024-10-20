@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import model.Shop;
 
 // Represents a writer that writes JSON representation of shop to file
-// Code for the following classs is heavily attributed to the JsonSerializationDemo example on edX
+// Code for the following class is heavily attributed to the JsonSerializationDemo example on edX
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

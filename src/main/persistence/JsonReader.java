@@ -12,7 +12,7 @@ import model.Item;
 import model.Shop;
 
 // Represents a reader that reads shop from JSON data stored in 
-// Code for the following classs is heavily attributed to the JsonSerializationDemo example on edX
+// Code for the following class is heavily attributed to the JsonSerializationDemo example on edX
 public class JsonReader {
     private String source;
     

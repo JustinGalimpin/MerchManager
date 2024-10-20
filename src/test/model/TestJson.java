@@ -1,8 +1,5 @@
 package model;
 
-import model.Shop;
-import model.Item;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestJson {
