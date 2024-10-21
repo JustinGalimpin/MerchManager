@@ -85,4 +85,8 @@ public class Shop implements Writable {
     public int getIncome() {
         return income;
     }
+
+    public void setIncome(int income) {
+        this.income = this.income + income;
+    }
 }

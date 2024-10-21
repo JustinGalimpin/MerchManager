@@ -1,4 +1,5 @@
 {
     "name": "My Test Shop",
-    "items": []
+    "items": [],
+    "income": 0
 }

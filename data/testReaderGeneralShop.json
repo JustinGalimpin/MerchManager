@@ -15,6 +15,7 @@
             "description": "A potion to cure your injuries."
         }
     ],
-    "name": "My Test Shop"
+    "name": "My Test Shop",
+    "income": 0
 }
 

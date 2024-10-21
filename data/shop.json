@@ -15,6 +15,7 @@
             "description": "A nice, sturdy shield."
         }
     ],
-    "name": "My First Shop"
+    "name": "My First Shop",
+    "income": 0
 }
 

@@ -43,7 +43,9 @@ public class JsonReader {
     // EFFECTS: parses shop from JSON object and returns it
     private Shop parseShop(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
+        Integer income = jsonObject.getInt("income");
         Shop shop = new Shop(name);
+        shop.setIncome(income);
         addItems(shop, jsonObject);
         return shop;    
     }
