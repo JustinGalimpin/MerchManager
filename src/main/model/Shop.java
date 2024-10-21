@@ -56,6 +56,7 @@ public class Shop implements Writable {
         JSONObject json = new JSONObject();
         json.put("name", shopName);
         json.put("items", itemsToJson());
+        json.put("income", income);
         return json;
     }
 
