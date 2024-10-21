@@ -1,4 +1,4 @@
-package model;
+package persistence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -8,6 +8,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import model.Item;
+import model.Shop;
 import persistence.JsonReader;
 
 public class TestJsonReader extends TestJson {

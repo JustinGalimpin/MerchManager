@@ -1,9 +1,12 @@
-package model;
+package persistence;
 
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import org.junit.jupiter.api.Test;
+
+import model.Item;
+import model.Shop;
 
 import java.io.IOException;
 import java.util.List;
