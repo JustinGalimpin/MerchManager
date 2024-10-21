@@ -1,8 +1,5 @@
 package persistence;
 
-import persistence.JsonReader;
-import persistence.JsonWriter;
-
 import org.junit.jupiter.api.Test;
 
 import model.Item;
@@ -28,7 +25,7 @@ class TestJsonWriter extends TestJson {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterEmptyShop() {
         try {
             Shop shop = new Shop("My Test Shop");
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyShop.json");
@@ -46,7 +43,7 @@ class TestJsonWriter extends TestJson {
     }
 
     @Test
-    void testWriterGeneralWorkroom() {
+    void testWriterGeneralShop() {
         try {
             Shop shop = new Shop("My Test Shop");
             shop.addItem(new Item("Potion", "Consumable", "High", 50, "A potion to cure your injuries."));

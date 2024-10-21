@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import model.Item;
 import model.Shop;
-import persistence.JsonReader;
 
 public class TestJsonReader extends TestJson {
     @Test
@@ -37,7 +36,7 @@ public class TestJsonReader extends TestJson {
     }
 
     @Test
-    void testReaderGeneralWorkRoom() {
+    void testReaderGeneralWorkRoomShop() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralShop.json");
         try {
             Shop shop = reader.read();

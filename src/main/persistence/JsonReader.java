@@ -11,7 +11,7 @@ import org.json.*;
 import model.Item;
 import model.Shop;
 
-// Represents a reader that reads shop from JSON data stored in 
+// Represents a reader that reads shop from JSON data stored in file
 // Code for the following class is heavily attributed to the JsonSerializationDemo example on edX
 public class JsonReader {
     private String source;
@@ -59,7 +59,7 @@ public class JsonReader {
     }
 
     // MODIFIES: shop
-    // EFFECTS: parses item from JSON object and adds it to workroom
+    // EFFECTS: parses single item from JSON object and adds it to shop
     private void addItem(Shop shop, JSONObject jsonObject) {
         String itemName = jsonObject.getString("itemName");
         String type = jsonObject.getString("type");
