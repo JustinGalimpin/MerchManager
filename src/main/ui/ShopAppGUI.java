@@ -4,12 +4,9 @@ import javax.swing.*;
 
 import model.Item;
 import model.Shop;
-import persistence.JsonReader;
-import persistence.JsonWriter;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 // Code for the following class is heavily attributed to the AlarmSystem Demo example on edX
 public class ShopAppGUI extends JFrame {
@@ -19,6 +16,7 @@ public class ShopAppGUI extends JFrame {
     private Shop shop; // Your shop object
     private JTextArea outputArea; // Area to display output
 
+    // Constructor representing the GUI of a Shop Class
     public ShopAppGUI(Shop shop) {
         this.shop = shop;
 
@@ -34,18 +32,15 @@ public class ShopAppGUI extends JFrame {
         setVisible(true);
     }
 
-      private void addButtonPanel() {
+    private void addButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 2));
-
-        // Add buttons with ActionEvents
-		buttonPanel.add(new JButton(new AddItemAction()));
-        // buttonPanel.add(createButton("Sell Item", new RemoveItemAction()));
-        // buttonPanel.add(createButton("Save Shop", new SaveShopAction()));
-        // buttonPanel.add(createButton("Load Shop", new LoadShopAction()));
-        // buttonPanel.add(createButton("View Income", new ViewIncoomeAction()));
-        // buttonPanel.add(createButton("Display Items", new DisplayItemsAction()));
-
+        buttonPanel.add(new JButton(new AddItemAction()));
+        buttonPanel.add(new JButton(new SellItemAction()));
+        buttonPanel.add(new JButton(new ViewItemAction()));
+        buttonPanel.add(new JButton(new ViewInventoryAction()));
+        buttonPanel.add(new JButton(new SaveShopAction()));
+        buttonPanel.add(new JButton(new LoadShopAction()));
         add(buttonPanel, BorderLayout.WEST);
     }
 
@@ -56,16 +51,17 @@ public class ShopAppGUI extends JFrame {
     }
 
     private void centreOnScreen() {
-		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
-		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-		setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
-	}
+        int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+        setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
+    }
 
+    // Represents the action to be taken when the user wants to add an Item to the Shop
     private class AddItemAction extends AbstractAction {
 
-		AddItemAction() {
-			super("Add Item");
-		}
+        AddItemAction() {
+            super("Add Item");
+        }
 
         @Override
         public void actionPerformed(ActionEvent evt) {
@@ -83,5 +79,68 @@ public class ShopAppGUI extends JFrame {
         }
     }
 
-    
+    // Represents the action to be taken when the user wants to sell an Item from the Shop
+    private class SellItemAction extends AbstractAction {
+
+        SellItemAction() {
+            super("Sell Item");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            // Stub
+        }
+    }
+
+    // Represents the action to be taken when the user wants to view a list of items from the Shop
+    private class ViewInventoryAction extends AbstractAction {
+
+        ViewInventoryAction() {
+            super("View Inventory");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            // Stub
+        }
+    }
+
+    // Represents the action to be taken when the user wants to view a single item from the Shop
+    private class ViewItemAction extends AbstractAction {
+
+        ViewItemAction() {
+            super("View Item");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            // Stub
+        }
+    }
+
+    // Represents the action to be taken when the user wants to save the state of the Shop
+    private class SaveShopAction extends AbstractAction {
+
+        SaveShopAction() {
+            super("Save Shop");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            // Stub
+        }
+    }
+
+    // Represents the action to be taken when the user wants to load a previous state of the Shop
+    private class LoadShopAction extends AbstractAction {
+
+        LoadShopAction() {
+            super("Load Shop");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            // Stub
+        }
+    }
 }
