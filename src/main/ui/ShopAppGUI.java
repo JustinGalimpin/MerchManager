@@ -92,7 +92,20 @@ public class ShopAppGUI extends JFrame {
         // EFFECTS: Prints out the list of items in the shop or states if the shop is empty
         @Override
         public void actionPerformed(ActionEvent evt) {
-        // Stub
+            String itemToView = JOptionPane.showInputDialog("What item do you want to sell?");
+            ArrayList<Item> inventory = shop.getInventory();
+            if (inventory.isEmpty()) {
+                outputArea.setText("The shop has nothing to sell!\n");
+            } else {
+                for (Item item : inventory) {
+                    if (item.getItemName().equalsIgnoreCase(itemToView)) {
+                        shop.removeItem(item);
+                        outputArea.setText("Item has been sold!");
+                        return;
+                    }
+                }
+                outputArea.setText("No item with that name in the shop!\n");
+            }     
         }
     }
 
