@@ -7,6 +7,7 @@ import model.Shop;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 // Code for the following class is heavily attributed to the AlarmSystem Demo example on edX
 public class ShopAppGUI extends JFrame {
@@ -63,6 +64,11 @@ public class ShopAppGUI extends JFrame {
             super("Add Item");
         }
 
+        // REQUIRES: itemName, type, quality, and description are non-empty Strings
+        //           itemName is not one that already exists in the inventory
+        //           price > 0         
+        // MODIFIES: this
+        // EFFECTS: Adds an item to the shop 
         @Override
         public void actionPerformed(ActionEvent evt) {
             String itemName = JOptionPane.showInputDialog("Enter item name:");
@@ -71,11 +77,8 @@ public class ShopAppGUI extends JFrame {
             int price = Integer.parseInt(JOptionPane.showInputDialog("Enter item price:"));
             String description = JOptionPane.showInputDialog("Enter item description:");
             Item newItem = new Item(itemName, type, quality, price, description);
-            if (shop.addItem(newItem)) {
-                System.out.println("Item has been added to the shop!");
-            } else {
-                System.out.println("Error! The shop already has an item with that name.");
-            }
+            shop.addItem(newItem);
+            outputArea.append("Item '" + itemName + "' has been added to the shop!\n");
         }
     }
 
@@ -86,9 +89,10 @@ public class ShopAppGUI extends JFrame {
             super("Sell Item");
         }
 
+        // EFFECTS: Prints out the list of items in the shop or states if the shop is empty
         @Override
         public void actionPerformed(ActionEvent evt) {
-            // Stub
+        // Stub
         }
     }
 
@@ -99,9 +103,22 @@ public class ShopAppGUI extends JFrame {
             super("View Inventory");
         }
 
+        // EFFECTS: Prints out the list of items in the shop or states if the shop is empty
         @Override
         public void actionPerformed(ActionEvent evt) {
-            // Stub
+            ArrayList<Item> inventory = shop.getInventory();
+            StringBuilder inventoryList = new StringBuilder();
+
+            if (inventory.isEmpty()) {
+                outputArea.setText("The shop is currently empty!\n");
+            } else {
+                for (Item item : inventory) {
+                    inventoryList.append("Name: ").append(item.getItemName()).append("\n")
+                    .append("Price: ").append(item.getPrice()).append("\n")
+                    .append("--------------------------------\n"); 
+                }
+                outputArea.setText(inventoryList.toString());
+            }
         }
     }
 
