@@ -29,6 +29,8 @@ public class ShopAppGUI extends JFrame {
     // Constructor representing the GUI of a Shop Class
     public ShopAppGUI(Shop shop) {
         this.shop = shop;
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
 
         setTitle("Shop Inventory Management");
         setSize(WIDTH, HEIGHT);
@@ -39,13 +41,8 @@ public class ShopAppGUI extends JFrame {
         centreOnScreen();
         addOutputArea();
         addItemListArea();
-        
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
-        
+        updateItemList();        
         setVisible(true);
-
-        updateItemList();
     }
 
     private void addButtonPanel() {
@@ -67,18 +64,23 @@ public class ShopAppGUI extends JFrame {
         setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
     }
 
+    // EFFECTS: Creates a center TextArea for application outputs
     private void addOutputArea() {
         outputArea = new JTextArea();
         outputArea.setEditable(false);
         add(new JScrollPane(outputArea), BorderLayout.CENTER);
     }
 
+    // EFFECTS: Centers a persistent list for viewing items in the Shop
     private void addItemListArea() {
         itemListArea = new JTextArea();
         itemListArea.setEditable(false);
+        itemListArea.setPreferredSize(new Dimension(200, 500));
         add(new JScrollPane(itemListArea), BorderLayout.EAST); 
     }
 
+    // MODIFIES: this
+    // EFFECTS: Updates the itemListArea to show the names of items in the Shop
     private void updateItemList() {
         StringBuilder itemList = new StringBuilder();
         ArrayList<Item> inventory = shop.getInventory();
@@ -93,8 +95,6 @@ public class ShopAppGUI extends JFrame {
         
         itemListArea.setText(itemList.toString());        
     }
-
-
 
     // Represents the action to be taken when the user wants to add an Item to the Shop
     private class AddItemAction extends AbstractAction {
@@ -179,12 +179,12 @@ public class ShopAppGUI extends JFrame {
 
     // Represents the action to be taken when the user wants to view a single item from the Shop
     private class ViewItemAction extends AbstractAction {
-
         ViewItemAction() {
             super("View Item");
         }
 
-        // EFFECTS: Prints out the qualities of a chosen item in the shop or states if the shop does not contain that item
+        // EFFECTS: Prints out the qualities of a chosen item in the shop
+        //          Otherwise States if the shop does not contain that item
         @Override
         public void actionPerformed(ActionEvent evt) {
             String itemToView = JOptionPane.showInputDialog("What item do you want to view?");
@@ -205,11 +205,11 @@ public class ShopAppGUI extends JFrame {
 
     // Represents the action to be taken when the user wants to save the state of the Shop
     private class SaveShopAction extends AbstractAction {
-
         SaveShopAction() {
             super("Save Shop");
         }
 
+        //EFFECTS: saves shop from file
         @Override
         public void actionPerformed(ActionEvent evt) {
             try {
@@ -225,11 +225,12 @@ public class ShopAppGUI extends JFrame {
 
     // Represents the action to be taken when the user wants to load a previous state of the Shop
     private class LoadShopAction extends AbstractAction {
-
         LoadShopAction() {
             super("Load Shop");
         }
 
+        // MODIFIES: this
+        // EFFECTS: loads shop from file
         @Override
         public void actionPerformed(ActionEvent evt) {
             try {
