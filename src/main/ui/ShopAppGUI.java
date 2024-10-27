@@ -22,8 +22,9 @@ public class ShopAppGUI extends JFrame {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
-    private Shop shop; // Your shop object
+    private Shop shop;
     private JTextArea outputArea; // Area to display output
+    JTextArea itemListArea; // Area to display items
 
     // Constructor representing the GUI of a Shop Class
     public ShopAppGUI(Shop shop) {
@@ -35,13 +36,16 @@ public class ShopAppGUI extends JFrame {
         setLayout(new BorderLayout());
 
         addButtonPanel();
-        addOutputArea();
         centreOnScreen();
+        addOutputArea();
+        addItemListArea();
         
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         
         setVisible(true);
+
+        updateItemList();
     }
 
     private void addButtonPanel() {
@@ -56,18 +60,41 @@ public class ShopAppGUI extends JFrame {
         add(buttonPanel, BorderLayout.WEST);
     }
 
-    private void addOutputArea() {
-        outputArea = new JTextArea();
-        outputArea.setEditable(false);
-        add(new JScrollPane(outputArea), BorderLayout.CENTER);
-    }
-
     // EFFECTS: Centers main application window on desktop
     private void centreOnScreen() {
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
         setLocation((width - getWidth()) / 2, (height - getHeight()) / 2);
     }
+
+    private void addOutputArea() {
+        outputArea = new JTextArea();
+        outputArea.setEditable(false);
+        add(new JScrollPane(outputArea), BorderLayout.CENTER);
+    }
+
+    private void addItemListArea() {
+        itemListArea = new JTextArea();
+        itemListArea.setEditable(false);
+        add(new JScrollPane(itemListArea), BorderLayout.EAST); 
+    }
+
+    private void updateItemList() {
+        StringBuilder itemList = new StringBuilder();
+        ArrayList<Item> inventory = shop.getInventory();
+        
+        if (inventory.isEmpty()) {
+            itemList.append("No items in the shop.");
+        } else {
+            for (Item item : inventory) {
+                itemList.append(item.getItemName()).append("\n");
+            }
+        }
+        
+        itemListArea.setText(itemList.toString());        
+    }
+
+
 
     // Represents the action to be taken when the user wants to add an Item to the Shop
     private class AddItemAction extends AbstractAction {
@@ -91,6 +118,7 @@ public class ShopAppGUI extends JFrame {
             Item newItem = new Item(itemName, type, quality, price, description);
             shop.addItem(newItem);
             outputArea.append("Item '" + itemName + "' has been added to the shop!\n");
+            updateItemList();
         }
     }
 
@@ -113,10 +141,12 @@ public class ShopAppGUI extends JFrame {
                     if (item.getItemName().equalsIgnoreCase(itemToView)) {
                         shop.removeItem(item);
                         outputArea.setText("Item has been sold!");
+                        updateItemList();
                         return;
                     }
                 }
                 outputArea.setText("No item with that name in the shop!\n");
+                updateItemList();
             }     
         }
     }
@@ -205,6 +235,7 @@ public class ShopAppGUI extends JFrame {
             try {
                 shop = jsonReader.read();
                 outputArea.setText("Loaded " + shop.getShopName() + " from " + JSON_STORE);
+                updateItemList();
             } catch (IOException e) {
                 outputArea.setText("Unable to write to file: " + JSON_STORE);
             }        
