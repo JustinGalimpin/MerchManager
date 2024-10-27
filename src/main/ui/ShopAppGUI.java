@@ -4,15 +4,23 @@ import javax.swing.*;
 
 import model.Item;
 import model.Shop;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Code for the following class is heavily attributed to the AlarmSystem Demo example on edX
 public class ShopAppGUI extends JFrame {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
+    private static final String JSON_STORE = "./data/shop.json";
+
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     private Shop shop; // Your shop object
     private JTextArea outputArea; // Area to display output
@@ -29,6 +37,9 @@ public class ShopAppGUI extends JFrame {
         addButtonPanel();
         addOutputArea();
         centreOnScreen();
+        
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         
         setVisible(true);
     }
@@ -51,6 +62,7 @@ public class ShopAppGUI extends JFrame {
         add(new JScrollPane(outputArea), BorderLayout.CENTER);
     }
 
+    // EFFECTS: Centers main application window on desktop
     private void centreOnScreen() {
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -170,7 +182,14 @@ public class ShopAppGUI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent evt) {
-            // Stub
+            try {
+                jsonWriter.open();
+                jsonWriter.write(shop);
+                jsonWriter.close();
+                outputArea.setText("Saved " + shop.getShopName() + " to " + JSON_STORE);
+            } catch (FileNotFoundException e) {
+                outputArea.setText("Unable to write to file: " + JSON_STORE);
+            }        
         }
     }
 
@@ -183,7 +202,12 @@ public class ShopAppGUI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent evt) {
-            // Stub
+            try {
+                shop = jsonReader.read();
+                outputArea.setText("Loaded " + shop.getShopName() + " from " + JSON_STORE);
+            } catch (IOException e) {
+                outputArea.setText("Unable to write to file: " + JSON_STORE);
+            }        
         }
     }
 }
