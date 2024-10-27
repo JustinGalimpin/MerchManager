@@ -54,6 +54,7 @@ public class ShopAppGUI extends JFrame {
         buttonPanel.add(new JButton(new ViewInventoryAction()));
         buttonPanel.add(new JButton(new SaveShopAction()));
         buttonPanel.add(new JButton(new LoadShopAction()));
+        buttonPanel.setPreferredSize(new Dimension(250, 300));
         add(buttonPanel, BorderLayout.WEST);
     }
 
@@ -86,12 +87,14 @@ public class ShopAppGUI extends JFrame {
         ArrayList<Item> inventory = shop.getInventory();
         
         if (inventory.isEmpty()) {
-            itemList.append("No items in the shop.");
+            itemList.append("No items in the shop.").append("\n");
         } else {
             for (Item item : inventory) {
                 itemList.append(item.getItemName()).append("\n");
             }
         }
+
+        itemList.append("Total Shop Income: " + shop.getIncome()).append("\n");
         
         itemListArea.setText(itemList.toString());        
     }
@@ -140,7 +143,7 @@ public class ShopAppGUI extends JFrame {
                 for (Item item : inventory) {
                     if (item.getItemName().equalsIgnoreCase(itemToView)) {
                         shop.removeItem(item);
-                        outputArea.setText("Item has been sold!");
+                        outputArea.setText("Item has been sold!\n");
                         updateItemList();
                         return;
                     }
@@ -216,9 +219,9 @@ public class ShopAppGUI extends JFrame {
                 jsonWriter.open();
                 jsonWriter.write(shop);
                 jsonWriter.close();
-                outputArea.setText("Saved " + shop.getShopName() + " to " + JSON_STORE);
+                outputArea.setText("Saved " + shop.getShopName() + " to " + JSON_STORE + "\n");
             } catch (FileNotFoundException e) {
-                outputArea.setText("Unable to write to file: " + JSON_STORE);
+                outputArea.setText("Unable to write to file: " + JSON_STORE + "\n");
             }        
         }
     }
@@ -235,10 +238,10 @@ public class ShopAppGUI extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             try {
                 shop = jsonReader.read();
-                outputArea.setText("Loaded " + shop.getShopName() + " from " + JSON_STORE);
+                outputArea.setText("Loaded " + shop.getShopName() + " from " + JSON_STORE + "\n");
                 updateItemList();
             } catch (IOException e) {
-                outputArea.setText("Unable to write to file: " + JSON_STORE);
+                outputArea.setText("Unable to write to file: " + JSON_STORE + "\n");
             }        
         }
     }
