@@ -183,7 +183,7 @@ public class ShopApp {
             System.out.println("What is the name of the item you want to view?");
             String itemToView = scanner.nextLine();
             for (Item item : inventory) {
-                if (item.getItemName().equals(itemToView)) {
+                if (item.getItemName().equalsIgnoreCase(itemToView)) {
                     System.out.println(item.getItemDetails());
                     return;
                 }

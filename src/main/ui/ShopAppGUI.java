@@ -129,9 +129,22 @@ public class ShopAppGUI extends JFrame {
             super("View Item");
         }
 
+        // EFFECTS: Prints out the qualities of a chosen item in the shop or states if the shop does not contain that item
         @Override
         public void actionPerformed(ActionEvent evt) {
-            // Stub
+            String itemToView = JOptionPane.showInputDialog("What item do you want to view?");
+            ArrayList<Item> inventory = shop.getInventory();
+            if (inventory.isEmpty()) {
+                outputArea.setText("The shop has nothing to view!\n");
+            } else {
+                for (Item item : inventory) {
+                    if (item.getItemName().equalsIgnoreCase(itemToView)) {
+                        outputArea.setText(item.getItemDetails());
+                        return;
+                    }
+                }
+                outputArea.setText("No item with that name in the shop!\n");
+            }
         }
     }
 
