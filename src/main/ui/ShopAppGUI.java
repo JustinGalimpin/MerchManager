@@ -43,6 +43,7 @@ public class ShopAppGUI extends JFrame {
         addItemListArea();
         updateItemList();        
         setVisible(true);
+        welcomePopUp();
     }
 
     private void addButtonPanel() {
@@ -79,6 +80,25 @@ public class ShopAppGUI extends JFrame {
         itemListArea.setEditable(false);
         itemListArea.setPreferredSize(new Dimension(200, 500));
         add(new JScrollPane(itemListArea), BorderLayout.EAST); 
+    }
+
+    // EFFECTS: Shows a messageDialog with an image welcoming the user
+    private void welcomePopUp() {
+        ImageIcon soldIcon = new ImageIcon("./data/welcome.png");
+        Image scaledIcon = soldIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        ImageIcon resizedIcon = new ImageIcon(scaledIcon);
+
+        JLabel iconLabel = new JLabel(resizedIcon);
+        iconLabel.setAlignmentX(Component.CENTER_ALIGNMENT); 
+        JLabel messageLabel = new JLabel("Welcome to the shop!");
+        messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(iconLabel);       
+        panel.add(messageLabel);    
+
+        JOptionPane.showMessageDialog(null, panel, "Welcome Message", JOptionPane.PLAIN_MESSAGE);
     }
 
     // MODIFIES: this
@@ -141,6 +161,7 @@ public class ShopAppGUI extends JFrame {
             updateItemList();
         }
 
+        // EFFECTS: Shows a messageDialog with an image confirming the item has been added
         private void addItemPopup() {
             ImageIcon soldIcon = new ImageIcon("./data/add.png");
             Image scaledIcon = soldIcon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
@@ -189,6 +210,7 @@ public class ShopAppGUI extends JFrame {
             }     
         }
 
+        // EFFECTS: Shows a messageDialog with an image confirming the item has been sold
         private void soldItemPopup() {
             ImageIcon soldIcon = new ImageIcon("./data/sold.png");
             Image scaledIcon = soldIcon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
