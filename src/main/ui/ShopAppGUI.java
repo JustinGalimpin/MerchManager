@@ -137,7 +137,26 @@ public class ShopAppGUI extends JFrame {
             Item newItem = new Item(itemName, type, quality, price, description);
             shop.addItem(newItem);
             outputArea.append("Item '" + itemName + "' has been added to the shop!\n");
+            addItemPopup();
             updateItemList();
+        }
+
+        private void addItemPopup() {
+            ImageIcon soldIcon = new ImageIcon("./data/add.png");
+            Image scaledIcon = soldIcon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+            ImageIcon resizedIcon = new ImageIcon(scaledIcon);
+    
+            JLabel iconLabel = new JLabel(resizedIcon);
+            iconLabel.setAlignmentX(Component.CENTER_ALIGNMENT); 
+            JLabel messageLabel = new JLabel("Item added successfully!");
+            messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            JPanel panel = new JPanel();
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+            panel.add(iconLabel);       
+            panel.add(messageLabel);    
+
+            JOptionPane.showMessageDialog(null, panel, "Item Added", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
