@@ -146,10 +146,6 @@ public class ShopAppGUI extends JFrame {
 
         SellItemAction() {
             super("Sell Item");
-            ImageIcon icon = new ImageIcon("./data/sell.png");
-            Image scaledIcon = icon.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
-            ImageIcon resizedIcon = new ImageIcon(scaledIcon);
-            putValue(SMALL_ICON, resizedIcon);
         }
 
         // EFFECTS: Prints out the list of items in the shop or states if the shop is empty
@@ -164,6 +160,7 @@ public class ShopAppGUI extends JFrame {
                     if (item.getItemName().equalsIgnoreCase(itemToView)) {
                         shop.removeItem(item);
                         outputArea.append("Item has been sold!\n");
+                        soldItemPopup();
                         updateItemList();
                         return;
                     }
@@ -171,6 +168,24 @@ public class ShopAppGUI extends JFrame {
                 outputArea.setText("No item with that name in the shop!\n");
                 updateItemList();
             }     
+        }
+
+        private void soldItemPopup() {
+            ImageIcon soldIcon = new ImageIcon("./data/sold.png");
+            Image scaledIcon = soldIcon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+            ImageIcon resizedIcon = new ImageIcon(scaledIcon);
+    
+            JLabel iconLabel = new JLabel(resizedIcon);
+            iconLabel.setAlignmentX(Component.CENTER_ALIGNMENT); 
+            JLabel messageLabel = new JLabel("Item sold successfully!");
+            messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            JPanel panel = new JPanel();
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+            panel.add(iconLabel);       
+            panel.add(messageLabel);    
+
+            JOptionPane.showMessageDialog(null, panel, "Sale Confirmation", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
