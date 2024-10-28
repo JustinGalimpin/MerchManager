@@ -71,6 +71,8 @@ public class ShopAppGUI extends JFrame {
     private void addOutputArea() {
         outputArea = new JTextArea();
         outputArea.setEditable(false);
+        outputArea.setBackground(Color.LIGHT_GRAY);
+        outputArea.setFont(new Font("Arial", Font.BOLD, 12)); 
         add(new JScrollPane(outputArea), BorderLayout.CENTER);
     }
 
@@ -78,6 +80,7 @@ public class ShopAppGUI extends JFrame {
     private void addItemListArea() {
         itemListArea = new JTextArea();
         itemListArea.setEditable(false);
+        itemListArea.setFont(new Font("Arial", Font.BOLD, 12)); 
         itemListArea.setPreferredSize(new Dimension(200, 500));
         add(new JScrollPane(itemListArea), BorderLayout.EAST); 
     }
