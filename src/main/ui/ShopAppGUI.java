@@ -146,6 +146,10 @@ public class ShopAppGUI extends JFrame {
 
         SellItemAction() {
             super("Sell Item");
+            ImageIcon icon = new ImageIcon("./data/sell.png");
+            Image scaledIcon = icon.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
+            ImageIcon resizedIcon = new ImageIcon(scaledIcon);
+            putValue(SMALL_ICON, resizedIcon);
         }
 
         // EFFECTS: Prints out the list of items in the shop or states if the shop is empty
