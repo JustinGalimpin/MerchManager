@@ -159,7 +159,7 @@ public class ShopAppGUI extends JFrame {
             String description = JOptionPane.showInputDialog("Enter item description:");
             Item newItem = new Item(itemName, type, quality, price, description);
             shop.addItem(newItem);
-            outputArea.append("Item '" + itemName + "' has been added to the shop!\n");
+            outputArea.append("\n" + "Item '" + itemName + "' has been added to the shop!\n");
             addItemPopup();
             updateItemList();
         }
@@ -197,18 +197,18 @@ public class ShopAppGUI extends JFrame {
             String itemToView = JOptionPane.showInputDialog("What item do you want to sell?");
             ArrayList<Item> inventory = shop.getInventory();
             if (inventory.isEmpty()) {
-                outputArea.setText("The shop has nothing to sell!\n");
+                outputArea.setText("\n" +"The shop has nothing to sell!\n");
             } else {
                 for (Item item : inventory) {
                     if (item.getItemName().equalsIgnoreCase(itemToView)) {
                         shop.removeItem(item);
-                        outputArea.append("Item has been sold!\n");
+                        outputArea.append("\n" +"Item has been sold!\n");
                         soldItemPopup();
                         updateItemList();
                         return;
                     }
                 }
-                outputArea.setText("No item with that name in the shop!\n");
+                outputArea.setText("\n" +"No item with that name in the shop!\n");
                 updateItemList();
             }     
         }
@@ -247,10 +247,10 @@ public class ShopAppGUI extends JFrame {
             StringBuilder inventoryList = new StringBuilder();
 
             if (inventory.isEmpty()) {
-                outputArea.append("The shop is currently empty!\n");
+                outputArea.append("\n" + "The shop is currently empty!\n");
             } else {
                 for (Item item : inventory) {
-                    inventoryList.append("Name: ").append(item.getItemName()).append("\n")
+                    inventoryList.append("\n" +"Name: ").append(item.getItemName()).append("\n")
                     .append("Price: ").append(item.getPrice()).append("\n")
                     .append("--------------------------------\n"); 
                 }
@@ -276,11 +276,11 @@ public class ShopAppGUI extends JFrame {
             } else {
                 for (Item item : inventory) {
                     if (item.getItemName().equalsIgnoreCase(itemToView)) {
-                        outputArea.append(item.getItemDetails() + "\n");
+                        outputArea.append("\n" + item.getItemDetails() + "\n");
                         return;
                     }
                 }
-                outputArea.append("No item with that name in the shop!\n");
+                outputArea.append("\n" + "No item with that name in the shop!\n");
             }
         }
     }
@@ -298,9 +298,9 @@ public class ShopAppGUI extends JFrame {
                 jsonWriter.open();
                 jsonWriter.write(shop);
                 jsonWriter.close();
-                outputArea.append("Saved " + shop.getShopName() + " to " + JSON_STORE + "\n");
+                outputArea.append("\n" + "Saved " + shop.getShopName() + " to " + JSON_STORE + "\n");
             } catch (FileNotFoundException e) {
-                outputArea.append("Unable to write to file: " + JSON_STORE + "\n");
+                outputArea.append("\n" + "Unable to write to file: " + JSON_STORE + "\n");
             }        
         }
     }
@@ -317,10 +317,10 @@ public class ShopAppGUI extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             try {
                 shop = jsonReader.read();
-                outputArea.append("Loaded " + shop.getShopName() + " from " + JSON_STORE + "\n");
+                outputArea.append("\n" + "Loaded " + shop.getShopName() + " from " + JSON_STORE + "\n");
                 updateItemList();
             } catch (IOException e) {
-                outputArea.append("Unable to write to file: " + JSON_STORE + "\n");
+                outputArea.append("\n" + "Unable to write to file: " + JSON_STORE + "\n");
             }        
         }
     }
