@@ -57,6 +57,8 @@ public class Item implements Writable {
             +
             "Price: " + getPrice() + "\n" 
             +
+            "Type: " + getType() + "\n" 
+            +
             "Quality: " + getQuality() + "\n" 
             +
             "Description: " + getDescription();
