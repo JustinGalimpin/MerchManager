@@ -30,7 +30,7 @@ This project is of interest to me because I find the application has the potenti
 ## Instructions for End User for Phase 3
 
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by **clicking the button labelled "Add Item" and entering the required inputs**.
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by **clicking the button labelled "View Inventory" and entering the required inputs**. Alternatively, you can click the **"View Item"** button if you wish to search up the details of a specific Item or the **"Remove Item"** button if you wish to remove an Item from the list.
-- You can locate my visual component by...
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by **clicking the button labelled "View Inventory"**. Alternatively, you can click the **"View Item"** button if you wish to search up the details of a specific Item or the **"Remove Item"** button if you wish to remove an Item from the list.
+- You can locate my visual component by **adding a new item with "Add Item"** or **selling an item with "Sell Item"**
 - You can save the state of my application by **clicking the button labelled "Save Shop".**
 - You can reload the state of my application by **clicking the button labelled "Load Shop".**
