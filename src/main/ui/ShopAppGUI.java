@@ -109,6 +109,8 @@ public class ShopAppGUI extends JFrame {
     private void updateItemList() {
         StringBuilder itemList = new StringBuilder();
         ArrayList<Item> inventory = shop.getInventory();
+
+        itemList.append("Total Shop Income: " + shop.getIncome()).append("\n");
         
         if (inventory.isEmpty()) {
             itemList.append("No items in the shop.").append("\n");
@@ -117,8 +119,6 @@ public class ShopAppGUI extends JFrame {
                 itemList.append(item.getItemName()).append("\n");
             }
         }
-
-        itemList.append("Total Shop Income: " + shop.getIncome()).append("\n");
         
         itemListArea.setText(itemList.toString());        
     }
