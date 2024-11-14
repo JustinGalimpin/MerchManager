@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 // Code for the following class is heavily attributed to the AlarmSystem Demo example on edX
+// as well as the provided UI Swings Tutorial link on edX:
+// https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html
+
 public class ShopAppGUI extends JFrame {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
@@ -73,6 +76,8 @@ public class ShopAppGUI extends JFrame {
         outputArea.setEditable(false);
         outputArea.setBackground(Color.LIGHT_GRAY);
         outputArea.setFont(new Font("Arial", Font.BOLD, 12)); 
+        outputArea.setOpaque(false); 
+
         add(new JScrollPane(outputArea), BorderLayout.CENTER);
     }
 
