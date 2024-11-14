@@ -202,18 +202,18 @@ public class ShopAppGUI extends JFrame {
             String itemToView = JOptionPane.showInputDialog("What item do you want to sell?");
             ArrayList<Item> inventory = shop.getInventory();
             if (inventory.isEmpty()) {
-                outputArea.setText("\n" +"The shop has nothing to sell!\n");
+                outputArea.setText("\n" + "The shop has nothing to sell!\n");
             } else {
                 for (Item item : inventory) {
                     if (item.getItemName().equalsIgnoreCase(itemToView)) {
                         shop.removeItem(item);
-                        outputArea.append("\n" +"Item has been sold!\n");
+                        outputArea.append("\n" + "Item has been sold!\n");
                         soldItemPopup();
                         updateItemList();
                         return;
                     }
                 }
-                outputArea.setText("\n" +"No item with that name in the shop!\n");
+                outputArea.setText("\n" + "No item with that name in the shop!\n");
                 updateItemList();
             }     
         }
@@ -255,7 +255,7 @@ public class ShopAppGUI extends JFrame {
                 outputArea.append("\n" + "The shop is currently empty!\n");
             } else {
                 for (Item item : inventory) {
-                    inventoryList.append("\n" +"Name: ").append(item.getItemName()).append("\n")
+                    inventoryList.append("\n" + "Name: ").append(item.getItemName()).append("\n")
                     .append("Price: ").append(item.getPrice()).append("\n")
                     .append("--------------------------------\n"); 
                 }
