@@ -92,7 +92,7 @@ public class ShopAppGUI extends JFrame {
 
     // EFFECTS: Shows a messageDialog with an image welcoming the user
     private void welcomePopUp() {
-        ImageIcon soldIcon = new ImageIcon("./data/welcome.png");
+        ImageIcon soldIcon = new ImageIcon("./images/welcome.png");
         Image scaledIcon = soldIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
         ImageIcon resizedIcon = new ImageIcon(scaledIcon);
 
@@ -171,7 +171,7 @@ public class ShopAppGUI extends JFrame {
 
         // EFFECTS: Shows a messageDialog with an image confirming the item has been added
         private void addItemPopup() {
-            ImageIcon soldIcon = new ImageIcon("./data/add.png");
+            ImageIcon soldIcon = new ImageIcon("./images/add.png");
             Image scaledIcon = soldIcon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
             ImageIcon resizedIcon = new ImageIcon(scaledIcon);
     
@@ -220,7 +220,7 @@ public class ShopAppGUI extends JFrame {
 
         // EFFECTS: Shows a messageDialog with an image confirming the item has been sold
         private void soldItemPopup() {
-            ImageIcon soldIcon = new ImageIcon("./data/sold.png");
+            ImageIcon soldIcon = new ImageIcon("./images/sold.png");
             Image scaledIcon = soldIcon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
             ImageIcon resizedIcon = new ImageIcon(scaledIcon);
     
