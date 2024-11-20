@@ -16,6 +16,7 @@ import java.util.ArrayList;
 // Code for the following class is heavily attributed to the AlarmSystem Demo example on edX
 // as well as the provided UI Swings Tutorial link on edX:
 // https://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html
+// Images are sourced/attributed to https://www.flaticon.com
 
 public class ShopAppGUI extends JFrame {
     private static final int WIDTH = 800;
