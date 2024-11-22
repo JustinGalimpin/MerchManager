@@ -29,12 +29,15 @@ public class Item implements Writable {
         switch (field) {
             case "name":
                 setItemName(newValue);
+                EventLog.getInstance().logEvent(new Event("Item name updated to: " + newValue));
                 break;
             case "price":
                 setPrice(Integer.parseInt(newValue));
+                EventLog.getInstance().logEvent(new Event("Item price updated to: " + newValue));
                 break;
             case "description":
                 setDescription(newValue);
+                EventLog.getInstance().logEvent(new Event("Item description updated to: " + newValue));
                 break;
         }
     }
