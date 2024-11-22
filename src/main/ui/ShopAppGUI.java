@@ -57,9 +57,10 @@ public class ShopAppGUI extends JFrame {
         buttonPanel.add(new JButton(new SellItemAction()));
         buttonPanel.add(new JButton(new ViewItemAction()));
         buttonPanel.add(new JButton(new ViewInventoryAction()));
+        buttonPanel.add(new JButton(new ModifyItemAction()));
+        buttonPanel.add(new JButton(new ClearOutputAction()));
         buttonPanel.add(new JButton(new SaveShopAction()));
         buttonPanel.add(new JButton(new LoadShopAction()));
-        buttonPanel.add(new JButton(new ClearOutputAction()));
         buttonPanel.setPreferredSize(new Dimension(250, 300));
         add(buttonPanel, BorderLayout.WEST);
     }
@@ -287,6 +288,51 @@ public class ShopAppGUI extends JFrame {
                     }
                 }
                 outputArea.append("\n" + "No item with that name in the shop!\n");
+            }
+        }
+    }
+
+    private class ModifyItemAction extends AbstractAction {
+        ModifyItemAction() {
+            super("Modify Item");
+        }
+    
+        // REQUIRES: item exists in the shop, newValue is a non-empty string
+        // MODIFIES: item
+        // EFFECTS: Allows the user to update an item's field if it exists in the shop
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            String itemName = JOptionPane.showInputDialog("Enter the name of the item to modify:");
+            ArrayList<Item> inventory = shop.getInventory();
+    
+            if (inventory.isEmpty()) {
+                outputArea.append("\nThe shop is empty. No items to modify.\n");
+                return;
+            }
+    
+            for (Item item : inventory) {
+                if (item.getItemName().equalsIgnoreCase(itemName)) {
+                    modifyItem(item); 
+                    updateItemList();
+                    return;
+                }
+            }
+            outputArea.append("\nNo item with the name '" + itemName + "' was found in the shop.\n");
+        }
+    
+        // MODIFIES: item
+        // EFFECTS: Allows the user to update a specific field of the item
+        private void modifyItem(Item item) {
+            String field = JOptionPane.showInputDialog(
+                    "Which field would you like to modify? (name, price, description)");
+            String newValue = JOptionPane.showInputDialog("Enter the new value for " + field + ":");
+
+            
+            try {
+                item.updateItem(field, newValue); 
+                outputArea.append("\nItem '" + item.getItemName() + "' was successfully updated.\n");
+            } catch (IllegalArgumentException e) {
+                outputArea.append("\nInvalid field or value. No changes made.\n");
             }
         }
     }
