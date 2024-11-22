@@ -36,6 +36,7 @@ public class Shop implements Writable {
         }
         if (!exists) {
             inventory.add(item);
+            EventLog.getInstance().logEvent(new Event("Item added to inventory: " + item.getItemName()));
             return true;
         } else {
             return false;
@@ -49,6 +50,8 @@ public class Shop implements Writable {
     public void removeItem(Item item) {
         this.income = this.income + item.getPrice();
         inventory.remove(item);
+        EventLog.getInstance().logEvent(new Event("Item sold from inventory: " + item.getItemName()));
+        EventLog.getInstance().logEvent(new Event("Shop income increased by: " + item.getPrice()));
     }
 
     @Override
