@@ -4,8 +4,11 @@ import javax.swing.*;
 
 import model.Item;
 import model.Shop;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,8 +30,8 @@ public class ShopAppGUI extends JFrame {
     private JsonReader jsonReader;
 
     private Shop shop;
-    private JTextArea outputArea; // Area to display output
-    JTextArea itemListArea; // Area to display items
+    private JTextArea outputArea; 
+    JTextArea itemListArea; 
 
     // Constructor representing the GUI of a Shop Class
     public ShopAppGUI(Shop shop) {
@@ -48,6 +51,7 @@ public class ShopAppGUI extends JFrame {
         updateItemList();        
         setVisible(true);
         welcomePopUp();
+        addWindowCloseListener();
     }
 
     private void addButtonPanel() {
@@ -109,6 +113,29 @@ public class ShopAppGUI extends JFrame {
         panel.add(messageLabel);    
 
         JOptionPane.showMessageDialog(null, panel, "Welcome Message", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    //EFFECTS: Adds a listener that will call printEventLog when application closes
+    private void addWindowCloseListener() {
+        addWindowListener(new CustomWindowAdapter());
+    }
+    
+    // A custom window object that calls printEventLog when the application closes
+    private class CustomWindowAdapter extends WindowAdapter {
+        @Override
+        public void windowClosing(WindowEvent e) {
+            printEventLog();
+            System.exit(0);        
+        }
+    }
+
+    // EFFECTS: Prints out all the events in the eventLog to console
+    private void printEventLog() {
+        EventLog eventLog = EventLog.getInstance(); 
+        System.out.println("Application Event Log:");
+        for (model.Event event : eventLog) {
+            System.out.println(event.getDescription());
+        }
     }
 
     // MODIFIES: this
@@ -292,6 +319,7 @@ public class ShopAppGUI extends JFrame {
         }
     }
 
+    // Represents the action to be taken when the user wants to modify a single item from the Shop
     private class ModifyItemAction extends AbstractAction {
         ModifyItemAction() {
             super("Modify Item");
@@ -327,7 +355,7 @@ public class ShopAppGUI extends JFrame {
                     "Which field would you like to modify? (name, price, description)");
             String newValue = JOptionPane.showInputDialog("Enter the new value for " + field + ":");
 
-            
+
             try {
                 item.updateItem(field, newValue); 
                 outputArea.append("\nItem '" + item.getItemName() + "' was successfully updated.\n");
