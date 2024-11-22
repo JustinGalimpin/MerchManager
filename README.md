@@ -34,3 +34,12 @@ This project is of interest to me because I find the application has the potenti
 - You can locate my visual component by **adding a new item with "Add Item"** or **selling an item with "Sell Item"**
 - You can save the state of my application by **clicking the button labelled "Save Shop".**
 - You can reload the state of my application by **clicking the button labelled "Load Shop".**
+
+## Phase 4: Task 2
+Below is a representative sample of events that can occur when the program runs:
+- Item added to inventory: Armor
+- Item added to inventory: Shield
+- Item added to inventory: Pizza
+- Pizza price updated to: 100
+- Item sold from inventory: Pizza
+- Shop income increased by: 100
