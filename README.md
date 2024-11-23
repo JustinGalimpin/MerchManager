@@ -43,3 +43,9 @@ Below is a representative sample of events that can occur when the program runs:
 - Pizza price updated to: 100
 - Item sold from inventory: Pizza
 - Shop income increased by: 100
+
+## Phase 4: Task 3
+
+Upon reflecting on the design of my project's UML Diagram, one thing that stood out to me is that there is currently a **uni-directional reelationship** between `Shop` and `Item`. While a Shop contains a collection of items, it makes sense that a singular instance of an Item can only belong to one Shop. As such, I would refactor this relationship to become **bi-directional**. This would also help in future-proofing my program, such as if I wanted to be able to have multiple Shops with items rather than just one; this change would make it so an Item could not accidentally be added to multiple Shops.
+
+Another refactor would be to introduce the **Observer pattern** between `ShopAppGUI`/`ShopApp` and `Shop`/`Item`. In using this pattern, Shop would be the Subject (as most of the changes in the state of Items occur in the Shop), and the ShopAppGUI/ShopApp would be Observers. This would make the system more flexible, especially if additional UI components or even different views of the Shop were introduced. For instance, changes in item quantity or price could automatically trigger updates in the GUI, reducing the need for the GUI to continuously check for changes. 
