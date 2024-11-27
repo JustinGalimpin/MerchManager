@@ -40,6 +40,8 @@ public class Item implements Writable {
                 setDescription(newValue);
                 EventLog.getInstance().logEvent(new Event(itemName + " description updated to: " + newValue));
                 break;
+            default:
+                throw new IllegalArgumentException();
         }
     }
 
