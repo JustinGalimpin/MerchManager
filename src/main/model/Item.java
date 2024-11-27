@@ -28,8 +28,9 @@ public class Item implements Writable {
     public void updateItem(String field, String newValue) {
         switch (field) {
             case "name":
+                String tempName = this.itemName;
                 setItemName(newValue);
-                EventLog.getInstance().logEvent(new Event(itemName + " name updated to: " + newValue));
+                EventLog.getInstance().logEvent(new Event(tempName + " name updated to: " + newValue));
                 break;
             case "price":
                 setPrice(Integer.parseInt(newValue));
