@@ -1,6 +1,7 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,14 +76,18 @@ public class TestItem {
 
     @Test
     void testInvalidField(){
-        sword.updateItem("quality", "Legendary");
-        sword.updateItem("type", "Shield");
-        // Assert nothing else has been changed
-        assertEquals("A basic sword.", sword.getDescription());
-        assertEquals("Sword", sword.getItemName());
-        assertEquals("Weapon", sword.getType());
-        assertEquals(10, sword.getPrice());
-        assertEquals("Common", sword.getQuality());
+        try {
+            sword.updateItem("quality", "Legendary");
+            sword.updateItem("type", "Shield");
+            fail();
+        } catch (IllegalArgumentException e) {
+            // Assert nothing else has been changed
+            assertEquals("A basic sword.", sword.getDescription());
+            assertEquals("Sword", sword.getItemName());
+            assertEquals("Weapon", sword.getType());
+            assertEquals(10, sword.getPrice());
+            assertEquals("Common", sword.getQuality());
+        }
     }
 
 }
