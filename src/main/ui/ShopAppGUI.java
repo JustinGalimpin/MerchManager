@@ -54,6 +54,7 @@ public class ShopAppGUI extends JFrame {
         addWindowCloseListener();
     }
 
+    // EFFECTS: Setups the buttons in the display area
     private void addButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 2));
@@ -165,7 +166,7 @@ public class ShopAppGUI extends JFrame {
         }
        
         // MODIFIES: this
-        // EFFECTS: Adds an item to the shop 
+        // EFFECTS: Clears output area
         @Override
         public void actionPerformed(ActionEvent evt) {
             outputArea.setText("");
