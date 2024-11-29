@@ -135,7 +135,7 @@ public class ShopAppGUI extends JFrame {
         EventLog eventLog = EventLog.getInstance(); 
         System.out.println("Application Event Log:");
         for (model.Event event : eventLog) {
-            System.out.println(event.getDescription());
+            System.out.println(event.toString());
         }
     }
 
