@@ -37,12 +37,20 @@ This project is of interest to me because I find the application has the potenti
 
 ## Phase 4: Task 2
 Below is a representative sample of events that can occur when the program runs:
+
+- Application Event Log:
+- Fri Nov 29 10:37:58 PST 2024
 - Item added to inventory: Armor
+- Fri Nov 29 10:37:58 PST 2024
 - Item added to inventory: Shield
-- Item added to inventory: Pizza
-- Pizza price updated to: 100
-- Item sold from inventory: Pizza
-- Shop income increased by: 100
+- Fri Nov 29 10:37:58 PST 2024
+- Shop was loaded from previous state
+- Fri Nov 29 10:38:08 PST 2024
+- Armor price updated to: 200
+- Fri Nov 29 10:38:13 PST 2024
+- Item sold from inventory: Shield
+- Fri Nov 29 10:38:13 PST 2024
+- Shop income increased by: 75
 
 ## Phase 4: Task 3
 
