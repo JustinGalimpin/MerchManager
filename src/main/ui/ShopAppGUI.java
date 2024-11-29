@@ -338,6 +338,10 @@ public class ShopAppGUI extends JFrame {
                 outputArea.append("\nThe shop is empty. No items to modify.\n");
                 return;
             }
+
+            if (itemName == null) {
+                return;
+            }
     
             for (Item item : inventory) {
                 if (item.getItemName().equalsIgnoreCase(itemName)) {
@@ -354,8 +358,13 @@ public class ShopAppGUI extends JFrame {
         private void modifyItem(Item item) {
             String field = JOptionPane.showInputDialog(
                     "Which field would you like to modify? (name, price, description)");
+            if (field == null) { 
+                return;
+            }
             String newValue = JOptionPane.showInputDialog("Enter the new value for " + field + ":");
-
+            if (newValue == null) { 
+                return;
+            }
 
             try {
                 item.updateItem(field, newValue); 
