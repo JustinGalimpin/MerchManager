@@ -54,6 +54,16 @@ public class Shop implements Writable {
         EventLog.getInstance().logEvent(new Event("Shop income increased by: " + item.getPrice()));
     }
 
+    // EFFECTS: Logs event when Shop is loaded
+    public void loadedShopLog() {
+        EventLog.getInstance().logEvent(new Event("Shop was loaded from previous state"));
+    }
+
+    // EFFECTS: Logs event when Shop is saved
+    public void savedShopLog() {
+        EventLog.getInstance().logEvent(new Event("Current Shop state was saved"));
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -61,9 +71,9 @@ public class Shop implements Writable {
         json.put("items", itemsToJson());
         json.put("income", income);
         return json;
-    }
+    }   
 
-        // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns things in this workroom as a JSON array
     private JSONArray itemsToJson() {
         JSONArray jsonArray = new JSONArray();
 

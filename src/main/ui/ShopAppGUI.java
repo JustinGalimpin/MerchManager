@@ -389,6 +389,7 @@ public class ShopAppGUI extends JFrame {
                 jsonWriter.write(shop);
                 jsonWriter.close();
                 outputArea.append("\n" + "Saved " + shop.getShopName() + " to " + JSON_STORE + "\n");
+                shop.savedShopLog();
             } catch (FileNotFoundException e) {
                 outputArea.append("\n" + "Unable to write to file: " + JSON_STORE + "\n");
             }        
@@ -407,6 +408,7 @@ public class ShopAppGUI extends JFrame {
         public void actionPerformed(ActionEvent evt) {
             try {
                 shop = jsonReader.read();
+                shop.loadedShopLog();
                 outputArea.append("\n" + "Loaded " + shop.getShopName() + " from " + JSON_STORE + "\n");
                 updateItemList();
             } catch (IOException e) {
